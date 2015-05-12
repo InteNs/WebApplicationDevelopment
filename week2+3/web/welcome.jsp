@@ -34,14 +34,16 @@
     <!-- Jumbotron -->
     <div class="jumbotron">
         <div class="container">
-            <h1>Welcome,<%=realName%></h1></h1>
-            <p>Geef alsjeblieft veel geld uit bij ons bedrijf!</p>
+            <h1>Welcome <%=realName%>,</h1>
+            <p>We slaan je wachtwoord in plain text op in een  onbeveiligd txt bestand!</p>
 
             <div class="container-fluid">
                 <!-- row kanker blokken =D -->
                 <div class="row row-centered">
                     <div class="col-md-3 col-centered">
-                        <button type="button" onclick="alert('werkzaam');" class="btn"><span class="glyphicon glyphicon-off blok" style="font-size: 8.0em;"></span></br><span style="font-size:2.0em;">Uitloggen</span></button>
+                        <form action="logout.do" method="post">
+                            <button type="submit" class="btn"><span class="glyphicon glyphicon-off blok" style="font-size: 8.0em;"></span></br><span style="font-size:2.0em;">Uitloggen</span></button>
+                        </form>
                     </div>
                 </div>
             </div>

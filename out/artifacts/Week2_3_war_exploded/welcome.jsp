@@ -18,44 +18,43 @@
     String loggedIn = (String) request.getSession().getAttribute(
             "loggedInRealName");
   %>
-  <title>My account: <%=realName%></title>
-  <style>
-    .ltf {
-      background-color: white;
-      border-style: solid;
-      border-size: 4em;
-      border-color: gray;
-      font-family: "Ubuntu";
-      font-size: 20px;
-    }
+<title>My account: <%=realName%></title>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>A.T.D. Terminal</title>
+        <link href="bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="base.css" rel="stylesheet">
+    </head>
+    <body></body>
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Welcome <%=realName%>,</h1>
+            <p>We slaan je wachtwoord in plain text op in een  onbeveiligd txt bestand!</p>
 
-    body {
-      font-family: "Ubuntu";
-      font-size: 17px;
-      color: purple;
-    }
+            <div class="container-fluid">
+                <!-- row kanker blokken =D -->
+                <div class="row row-centered">
+                    <div class="col-md-3 col-centered">
+                        <form action="logout.do" method="post">
+                            <button type="submit" class="btn"><span class="glyphicon glyphicon-off blok" style="font-size: 8.0em;"></span></br><span style="font-size:2.0em;">Uitloggen</span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-    .button {
-      padding: 5px 15px;
-      background: #ccc;
-      border: 0 none;
-      cursor: pointer;
-      -webkit-border-radius: 5px;
-      border-radius: 5px;
-    }
+        </div>
+    </div>
 
-    .input1 {
-      font-family: "Ubuntu";
-      font-size: 14.1059px;
-      color: purple;
-    }
-  </style>
+    </body>
 
-</head>
-<body>
-<h1>
-  Welcome,
-  <%=realName%></h1>
-<br>
-</body>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
 </html>

@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 
                 String[]ar = str.split("-");
                 if (email.equals(ar[0])&&password.equals(ar[1])){
-                    user = ar[2]+" "+ ar[3];
+                    user = ar[3]+" "+ar[2];
                     succes=true;
                     break;
                 }
@@ -42,13 +42,14 @@ public class LoginServlet extends HttpServlet {
             rd = req.getRequestDispatcher("welcome.jsp");
             System.out.println(user);
             req.getSession().setAttribute("loggedInRealName",user);
-            Cookie c = new Cookie("cUsername", email);
+            Cookie c = new Cookie("cEmail", email);
             c.setMaxAge(2000);
             resp.addCookie(c);
             String loggedusers = req.getServletContext().getRealPath("/")+"loggedusers.txt";
-            BufferedWriter out = new BufferedWriter(new FileWriter(loggedusers,true));
-            out.write(email);
-            out.close();
+            PrintWriter pw = new PrintWriter(new FileWriter(loggedusers));
+            pw.println(email);
+            pw.flush();
+            pw.close();
         } else {
             req.setAttribute("succes","<div class=\"alert alert-danger\" role=\"alert\" style=\"margin-top:20px;\">Verkeerd emailadres en/of wachtwoord.</div>");
             System.out.println("failure");
