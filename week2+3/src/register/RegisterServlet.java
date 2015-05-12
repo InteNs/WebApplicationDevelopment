@@ -41,7 +41,7 @@ public class RegisterServlet extends HttpServlet {
 			req.setAttribute("succesReg","<div class=\"alert alert-success\" role=\"alert\" style=\"margin-top:20px;\">Registratie mislukt.</div>");
 		}
 		RequestDispatcher rd = null;
-		rd = req.getRequestDispatcher("index.jsp");
+		rd = req.getRequestDispatcher("google.com");
 		rd.forward(req, resp);
 		
 	}

@@ -25,7 +25,7 @@
 			<div class="row">
 				<div class="col-md-4"></div>
 				<div class="col-md-4"
-					style="background-color: rgba(238,238,238,0.8); border: 1px solid #0099CC; border-opacity: 0.2; border-radius: 0px; padding: 15px 15px 15px 15px;">
+					style="background-color: rgba(238,238,238,0.8); border: 1px solid #0099CC; border-opacity: 0.2; border-radius: 0; padding: 15px 15px 15px 15px;">
 					<h1 style="text-align: center; color: #0099CC; margin-bottom: 20px; font-size:32px;">AutoTotaalDienst</h1>
 					<!-- Inloggen -->
 					<h4 class="modal-title">Aanmelden:</h4>
@@ -81,12 +81,12 @@
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content"
-				style="border: 1px solid #0099CC; border-radius: 0px; background-color: rgba(238,238,238,0.9);">
+				style="border: 1px solid #0099CC; border-radius: 0; background-color: rgba(238,238,238,0.9);">
 
 
 				<div class="modal-body">
 					<h4 class="modal-title">Registratie</h4>
-					<form action="RegisterServlet.do" method="post" onsubmit="return validateElements();" action="#">
+					<form action="RegisterServlet.do" method="post">
 						<div class="row">
 							<div class="col-md-6">
 							<div class="form-group">
@@ -147,7 +147,7 @@
 						<div class="row" style="margin-left:16px;">
 						<div class="btn-toolbar" role="toolbar" aria-label="label">
 						<button type="button" class="btn" data-dismiss="modal" style="border-color: #0099CC;background-color: #FFF;  color: #626262;">Annuleren</button>
-						<button type="button" class="btn" value="submit"
+						<button type="submit" class="btn" value="submit"
 								id="buttonReg" style="background-color: #0099CC; color: #FFF;">Registreren</button>
 						</div>
 					</div>
