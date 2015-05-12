@@ -1,9 +1,7 @@
 /* On blur */
+var regexMail       = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
+var regexPassword   = new RegExp("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,8}$");
 function validateElement(element) {
-    var regexMail       = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
-    var regexPassword   = new RegExp("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,8}$");
-
-
     switch(element) {
         case 'email':    if(!document.getElementById('emailreg').value.match(regexMail)){
                                 document.getElementById('emailRegErr').innerHTML = "Vul een geldig emailadres in.";
@@ -30,8 +28,6 @@ function validateElement(element) {
 /* On submit */
 function validateElements() {
     var validated       = true;
-    var regexMail       = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$");
-    var regexPassword   = new RegExp("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).{4,8}$");
         /* Null check form */
         if(document.getElementById(emailreg).value=='')     validated = false;
         if(document.getElementById(emailrep).value=='')     validated = false;

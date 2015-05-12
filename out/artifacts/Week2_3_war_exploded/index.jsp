@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="base.css"/>
+    <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -42,14 +43,9 @@
 							</label>
 						</div>
 						<div class="btn-toolbar" role="toolbar" aria-label="label">
-							<button type="submit" class="btn"
-								style="background-color: #0099CC; color: #FFFFFF;">Aanmelden</button>
-							<button type="button" class="btn" data-toggle="modal"
-								data-target="#myModal"
-								style="background-color: #0099CC; color: #FFFFFF;">Registreren</button>
+							<button type="submit" class="btn">Aanmelden</button>
+                            <button type="button" onclick="location.href='Registration.jsp'" class="btn">Registreren</button>
 						</div>
-
-
 					</form>
 					<%
 				Object succes = request.getAttribute("succes");
@@ -57,23 +53,14 @@
 					out.println(succes);
 				}			 
 			%>
-			<%
-				Object msg = request.getAttribute("succesReg");
-				if(msg != null){
-					out.println(msg);
-				}
-			%>
 					<span>&nbsp;</span>
-
 				</div>
 		</div>
-
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
-	<script src="registration.js"></script>
 </body>
 </html>
