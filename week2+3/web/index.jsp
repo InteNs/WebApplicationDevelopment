@@ -20,19 +20,14 @@
 </head>
 <body>
 	<div class="container" style="margin-top: 50px;">
-			
-
-			<div class="row">
-				<div class="col-md-4"></div>
-				<div class="col-md-4"
-					style="background-color: rgba(238,238,238,0.8); border: 1px solid #0099CC; border-opacity: 0.2; border-radius: 0; padding: 15px 15px 15px 15px;">
-					<h1 style="text-align: center; color: #0099CC; margin-bottom: 20px; font-size:32px;">AutoTotaalDienst</h1>
+				<div class="jumotron"
+					style="background-color: rgba(238,238,238,0.8); width: 300px; padding: 15px; margin: 20vh auto auto;">
 					<!-- Inloggen -->
 					<h4 class="modal-title">Aanmelden:</h4>
 
 					<form action="LoginServlet.do" method="post">
 						<div class="form-group">
-							<label for="exampleInputEmail1">Email</label> <input type="email"
+							<label for="exampleInputEmail1">Email</label> <input type="text"
 								name="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Vul email in">
 						</div>
@@ -73,97 +68,7 @@
 				</div>
 		</div>
 
-		<div class="col-md-4"></div>
 	</div>
-
-	<!-- Model Registration -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content"
-				style="border: 1px solid #0099CC; border-radius: 0; background-color: rgba(238,238,238,0.9);">
-
-
-				<div class="modal-body">
-					<h4 class="modal-title">Registratie</h4>
-					<form action="RegisterServlet.do" method="post">
-						<div class="row">
-							<div class="col-md-6">
-							<div class="form-group">
-								<label for="emailreg">Emailadres</label> <input type="email"
-									name="emailreg" onblur='validateElement("emailreg");' 
-									class="form-control" id="emailreg" placeholder="Vul email in">
-                  <span id="emailRegErr"></span>
-							</div>
-							<div class="form-group">
-								<label for="emailrep">Herhaal emailadres</label> <input
-									type="email" name="emailrep"
-									class="form-control" onblur='validateElement("emailrep");' 
-									id="emailrep" placeholder="Herhaal email">
-                  <span id="emailRepErr"></span>
-							</div>
-							<div class="form-group">
-								<label for="passwordreg">Wachtwoord</label> <input
-									type="password" name="passwordreg" onblur='compareInput("passwordreg", "passwordrep");' 
-									class="form-control" id="passwordreg"
-									placeholder="Vul wachtwoord in">
-                  <span id="passwordRegErr"></span>
-							</div>
-							<div class="form-group">
-								<label for="passwordrep">Herhaal wachtwoord</label> <input
-									type="password" name="passwordrep" onblur='compareInput("passwordrep", "passwordreg");'
-									class="form-control" id="passwordrep"
-									placeholder="Herhaal wachtwoord">
-                  <span id="passwordRepErr"></span>
-							</div>
-						</div>
-
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="surname">Voornaam</label> <input type="text"
-									name="surname" class="form-control" id="surname"
-									placeholder="Vul voornaam in">
-                  <span id="surnameErr"></span>
-							</div>
-							<div class="form-group">
-								<label for="lastname">Achternaam</label> <input type="text"
-									name="lastname" class="form-control" id="lastname"
-									placeholder="Vul achternaam in">
-                  <span id="lastmnameErr"></span>
-							</div>
-							<div class="form-group">
-								<label for="address">Adres</label> <input type="text"
-									name="address" class="form-control" id="address"
-									placeholder="Vul adres in">
-                  <span id="addressErr"></span>
-							</div>
-							<div class="form-group">
-								<label for="country">Land</label> <input type="text"
-									name="country" class="form-control" id="country"
-									placeholder="Vul land in">
-                  <span id="countryErr"></span>
-							</div>
-						</div>
-						<div class="row" style="margin-left:16px;">
-						<div class="btn-toolbar" role="toolbar" aria-label="label">
-						<button type="button" class="btn" data-dismiss="modal" style="border-color: #0099CC;background-color: #FFF;  color: #626262;">Annuleren</button>
-						<button type="submit" class="btn" value="submit"
-								id="buttonReg" style="background-color: #0099CC; color: #FFF;">Registreren</button>
-						</div>
-					</div>
-
-					</div>
-					</form>
-
-
-
-				</div>
-			</div>
-			<!-- /.modal-content -->
-		</div>
-		<!-- /.modal-dialog -->
-	</div>
-	<!-- /.modal -->
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
