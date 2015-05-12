@@ -1,8 +1,6 @@
 package login;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,10 +41,14 @@ public class LoginServlet extends HttpServlet {
             System.out.println("succes");
             rd = req.getRequestDispatcher("welcome.jsp");
             System.out.println(user);
-            req.getSession().setAttribute("loggedInRealName",email);
+            req.getSession().setAttribute("loggedInRealName",user);
             Cookie c = new Cookie("cUsername", email);
             c.setMaxAge(2000);
             resp.addCookie(c);
+            String loggedusers = req.getServletContext().getRealPath("/")+"loggedusers.txt";
+            BufferedWriter out = new BufferedWriter(new FileWriter(loggedusers,true));
+            out.write(email);
+            out.close();
         } else {
             req.setAttribute("succes","<div class=\"alert alert-danger\" role=\"alert\" style=\"margin-top:20px;\">Verkeerd emailadres en/of wachtwoord.</div>");
             System.out.println("failure");
