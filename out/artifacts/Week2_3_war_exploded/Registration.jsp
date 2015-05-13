@@ -63,7 +63,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="surname">Voornaam</label> <input type="text"
-                                                                     name="surname" class="form-control" id="surname"
+                                                                     name="firstname" class="form-control" id="surname"
                                                                      placeholder="Vul voornaam in">
                         <span id="surnameErr"></span>
                     </div>

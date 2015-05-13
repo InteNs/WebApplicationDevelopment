@@ -1,12 +1,16 @@
 package login;
 
+import model.User;
+
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Created by InteNs on 13-5-2015.
@@ -18,7 +22,10 @@ public class LogoutServlet extends HttpServlet {
     protected void doPost( HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         String loggedusers = req.getServletContext().getRealPath("/")+"loggedusers.txt";
-        for(Cookie c: req.getCookies()) if (c.getName().equals("cEmail")) removeLineFromFile(loggedusers, c.getValue());
+        //removeLineFromFile(loggedusers, ((User)req.getSession().getAttribute("loggedInuser")).getEmail());
+        ServletContext context = req.getServletContext();
+        if(context.getAttribute("loggedusers") != null)
+            ((ArrayList<User>) context.getAttribute("loggedusers")).remove(req.getSession().getAttribute("loggedInuser"));
         RequestDispatcher rd;
         rd = req.getRequestDispatcher("index.jsp");
         rd.forward(req,resp);

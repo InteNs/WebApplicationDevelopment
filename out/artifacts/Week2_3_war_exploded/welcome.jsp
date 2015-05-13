@@ -1,3 +1,4 @@
+<%@ page import="model.User" %>
 <%--
   Created by IntelliJ IDEA.
   User: InteNs
@@ -13,12 +14,9 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <%
-    String realName = (String) request.getSession()
-            .getAttribute("loggedInRealName");
-    String loggedIn = (String) request.getSession().getAttribute(
-            "loggedInRealName");
+    User loggedInuser =((User)request.getSession().getAttribute("loggedInuser"));
   %>
-<title>My account: <%=realName%></title>
+<title>My account: <%=loggedInuser.getFirstName()+" "+loggedInuser.getSurName()%></title>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -34,7 +32,7 @@
     <!-- Jumbotron -->
     <div class="jumbotron">
         <div class="container">
-            <h1>Welcome <%=realName%>,</h1>
+            <h1>Welcome <%=loggedInuser.getFirstName()+" "+loggedInuser.getSurName()%>,</h1>
             <p>We slaan je wachtwoord in plain text op in een  onbeveiligd txt bestand!</p>
 
             <div class="container-fluid">
@@ -42,7 +40,7 @@
                 <div class="row row-centered">
                     <div class="col-md-3 col-centered">
                         <form action="logout.do" method="post">
-                            <button type="submit" class="btn"><span class="glyphicon glyphicon-off blok" style="font-size: 8.0em;"></span></br><span style="font-size:2.0em;">Uitloggen</span></button>
+                            <button type="submit" class="btn-welcome"><span class="glyphicon glyphicon-off blok" style="font-size: 8.0em;"></span></br><span style="font-size:2.0em;">Uitloggen</span></button>
                         </form>
                     </div>
                 </div>
