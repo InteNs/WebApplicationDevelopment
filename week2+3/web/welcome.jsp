@@ -42,7 +42,7 @@
                 <div class="row row-centered">
                     <div class="col-md-3 col-centered">
                         <form action="logout.do" method="post">
-                            <button type="submit" class="btn"><span class="glyphicon glyphicon-off blok" style="font-size: 8.0em;"></span></br><span style="font-size:2.0em;">Uitloggen</span></button>
+                            <button type="submit" class="btn-welcome"><span class="glyphicon glyphicon-off blok" style="font-size: 8.0em;"></span></br><span style="font-size:2.0em;">Uitloggen</span></button>
                         </form>
                     </div>
                 </div>
