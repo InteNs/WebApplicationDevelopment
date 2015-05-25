@@ -1,119 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>A.T.D. Terminal</title>
-
-    <!-- Bootstrap -->
-    <link href="bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="registration.css" rel="stylesheet" type="text/css"/>
-    <link href="base.css" rel="stylesheet" type="text/css"/>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
-<div class="container" style="margin-top: 50px;">
-    <div class="jumotron"
-         style="background-color: rgba(238,238,238,0.8); width: 500px; padding: 15px; margin: 20vh auto auto;">
-        <!-- Inloggen -->
-        <h4>Registreren:</h4>
-
-        <form action="RegisterServlet.do" method="post">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="emailreg">Emailadres</label> <input type="text"
-                                                                        name="emailreg"
-                                                                        onblur='validateElement("email");'
-                                                                        class="form-control" id="emailreg"
-                                                                        placeholder="Vul email in">
-                        <span id="emailRegErr"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="emailrep">Herhaal emailadres</label> <input
-                            type="text" name="emailrep"
-                            class="form-control" onblur='validateElement("email");'
-                            id="emailrep" placeholder="Herhaal email">
-                        <span id="emailRepErr"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="passwordreg">Wachtwoord</label> <input
-                            type="password" name="passwordreg" onblur='compareInput("passwordreg", "passwordrep");'
-                            class="form-control" id="passwordreg"
-                            placeholder="Vul wachtwoord in">
-                        <span id="passwordRegErr"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="passwordrep">Herhaal wachtwoord</label> <input
-                            type="password" name="passwordrep" onblur='compareInput("passwordrep", "passwordreg");'
-                            class="form-control" id="passwordrep"
-                            placeholder="Herhaal wachtwoord">
-                        <span id="passwordRepErr"></span>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="surname">Voornaam</label> <input type="text"
-                                                                     name="firstname" class="form-control" id="surname"
-                                                                     placeholder="Vul voornaam in">
-                        <span id="surnameErr"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastname">Achternaam</label> <input type="text"
-                                                                        name="lastname" class="form-control"
-                                                                        id="lastname"
-                                                                        placeholder="Vul achternaam in">
-                        <span id="lastmnameErr"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Adres</label> <input type="text"
-                                                                  name="address" class="form-control" id="address"
-                                                                  placeholder="Vul adres in">
-                        <span id="addressErr"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="country">Land</label> <input type="text"
-                                                                 name="country" class="form-control" id="country"
-                                                                 placeholder="Vul land in">
-                        <span id="countryErr"></span>
-                    </div>
-                </div>
-                <div class="row" style="margin-left:16px;">
-                    <div class="btn-toolbar" role="toolbar" aria-label="label">
-                        <button type="button" onclick="location.href='index.jsp'" class="btn">Terug</button>
-                        <button type="submit" class="btn">Registreren</button>
-                    </div>
-                </div>
-
-            </div>
-        </form>
-        <%
-            Object msg = request.getAttribute("succesReg");
-            if (msg != null) {
-                out.println(msg);
+<h4>Registreren</h4>
+<br/>
+<!-- Error messages -->
+<%
+    Object message = request.getAttribute("message");
+    if (message != null) {
+        out.print(message + "<br/>");
+    }
+%>
+<!-- Register form -->
+<form action="register" method="post">
+    <!-- Username -->
+    <div>
+        <input type="text" name="username" id="username" placeholder="Vul gebruikersnaam in">
+        <label for="username">Username <%
+            Object userNameNull = request.getAttribute("userNameNull");
+            if (userNameNull != null) {
+                out.print(userNameNull);
             }
-        %>
-        <span>&nbsp;</span>
-
+        %></label>
     </div>
-</div>
+    <!-- Realname -->
+    <div>
+        <input type="text" name="realname" id="realname" placeholder="Vul naam in">
+        <label for="realname">Naam <%
+            Object realNameNull = request.getAttribute("realNameNull");
+            if (realNameNull != null) {
+                out.print(realNameNull);
+            }
+        %></label>
+    </div>
+    <!-- Password -->
+    <div>
+        <input type="password" name="password" id="password" placeholder="Vul wachtwoord in">
+        <label for="password">Wachtwoord <%
+            Object passwordNull = request.getAttribute("passwordNull");
+            if (passwordNull != null) {
+                out.print(passwordNull);
+            }
+        %></label>
+    </div>
+    <!-- Password repeat -->
+    <div>
+        <input type="password" name="passwordRepeat" id="passwordRepeat" placeholder="Herhaal wachtwoord">
+        <label for="passwordRepeat">Herhaal wachtwoord <%
+            Object passwordRepeatError = request.getAttribute("passwordRepeatError");
+            if (passwordRepeatError != null) {
+                out.print(passwordRepeatError);
+            }
+        %></label>
+    </div>
+    <!-- Email -->
+    <div>
+        <input type="text" name="email" id="email" placeholder="Vul email in">
+        <label for="email">Emailadres <%
+            Object emailNull = request.getAttribute("emailNull");
+            if (emailNull != null) {
+                out.print(emailNull);
+            }
+        %></label>
+    </div>
+    <!-- Email repeat -->
+    <div>
+        <input type="text" name="emailRepeat" id="emailRepeat" placeholder="Herhaal email">
+        <label for="emailRepeat">Herhaal emailadres <%
+            Object emailRepeatError = request.getAttribute("emailRepeatError");
+            if (emailRepeatError != null) {
+                out.print(emailRepeatError);
+            }
+        %></label>
+    </div>
+    <!-- Address -->
+    <div>
+        <input type="text" name="address" id="address" placeholder="Vul adres in">
+        <label for="address">Adres <%
+            Object addressNull = request.getAttribute("addressNull");
+            if (addressNull != null) {
+                out.print(addressNull);
+            }
+        %></label>
+    </div>
+    <!-- Country -->
+    <div>
+        <input type="text" name="country" id="country" placeholder="Vul land in">
+        <label for="country">Land <%
+            Object countryNull = request.getAttribute("countryNull");
+            if (countryNull != null) {
+                out.print(countryNull);
+            }
+        %></label>
+    </div>
 
-<div class="col-md-4"></div>
-</div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
-<script src="registration.js"></script>
+    <br/>
+    <!-- Buttons -->
+        <button type="submit">Registreren</button>
+        <br/>
+        <button type="button" onclick="location.href='index.jsp'">Naar inloggen</button>
+    </div>
+</form>
 </body>
 </html>
