@@ -1,8 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.BlogPost" %>
 <%@ page import="model.User" %>
-<%@ page import="java.time.LocalDate" %>
-<%@ page import="java.time.LocalTime" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     if (request.getServletContext().getAttribute("usersList") != null)

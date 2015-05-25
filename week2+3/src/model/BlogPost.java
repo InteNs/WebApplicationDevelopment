@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class BlogPost {
+public class BlogPost implements Serializable {
     private String blogPost;
     private String info;
 
