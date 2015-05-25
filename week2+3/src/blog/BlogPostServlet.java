@@ -27,7 +27,7 @@ public class BlogPostServlet extends HttpServlet{
 
         user.getBlogPosts().add(new BlogPost(blogText, user));
 
-        rd = req.getRequestDispatcher("welcome.jsp");
+        rd = req.getRequestDispatcher("/secure/welcome.jsp");
 
         // Kill servlet and follow request dispatcher
         rd.forward(req, resp);

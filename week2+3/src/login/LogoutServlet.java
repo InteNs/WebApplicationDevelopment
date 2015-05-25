@@ -21,16 +21,15 @@ public class LogoutServlet extends HttpServlet {
         ServletContext servletContext = req.getServletContext();
 
         if (req.getSession().getAttribute("loggedInUser") != null) {
-            ((ArrayList<User>) servletContext.getAttribute("loggedInUsers")).remove(req.getSession().getAttribute("loggedInUser"));
-            req.getSession().invalidate();
-            req.setAttribute("message", "<div style=\"color: green;\">Succesvol uitgelogged.</div>");
-
-            User user = (User) req.getSession().getAttribute("loggedInUser");
+            // Log logout users.
             Logger.getLogger("listener.SessionCounterListener").info("User "
-                    + user.getUserName()
+                    + req.getSession().getAttribute("loggedInUser")
                     + " logout!\nAmount of online users: "
                     + SessionCounterListener.getTotalActiveSession()
                     + ".");
+            ((ArrayList<User>) servletContext.getAttribute("loggedInUsers")).remove(req.getSession().getAttribute("loggedInUser"));
+            req.getSession().invalidate();
+            req.setAttribute("logoutMessage", "<div style=\"color: green;\">Succesvol uitgelogged.</div>");
         }
 
         rd = req.getRequestDispatcher("index.jsp");

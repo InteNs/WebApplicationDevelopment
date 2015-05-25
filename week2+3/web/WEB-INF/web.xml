@@ -7,46 +7,52 @@
 	<!--Listeners -->
 	<listener>
 		<listener-class>listener.ServerContextListener</listener-class>
+	</listener>
+	<listener>
 		<listener-class>listener.SessionCounterListener</listener-class>
 	</listener>
 
-	<!--Servlets -->
+	<!--Servlets & Mappings -->
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>login.LoginServlet</servlet-class>
-	</servlet>
-
-		<servlet-name>LogoutServlet</servlet-name>
-		<servlet-class>login.LogoutServlet</servlet-class>
-
-		<servlet-name>RegisterServlet</servlet-name>
-		<servlet-class>register.RegisterServlet</servlet-class>
-
-		<servlet-name>BlogPostServlet</servlet-name>
-		<servlet-class>blog.BlogPostServlet</servlet-class>
-
 		<init-param>
 			<param-name>userName</param-name>
 			<param-value>admin</param-value>
 		</init-param>
-
 		<init-param>
 			<param-name>password</param-name>
 			<param-value>admin</param-value>
 		</init-param>
 	</servlet>
-
-	<!--Mappings -->
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>login.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
 		<servlet-name>LogoutServlet</servlet-name>
 		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>RegisterServlet</servlet-name>
+		<servlet-class>register.RegisterServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
 		<servlet-name>RegisterServlet</servlet-name>
 		<url-pattern>/register</url-pattern>
+	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>BlogPostServlet</servlet-name>
+		<servlet-class>blog.BlogPostServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
 		<servlet-name>BlogPostServlet</servlet-name>
 		<url-pattern>/createPost</url-pattern>
 	</servlet-mapping>
@@ -56,18 +62,9 @@
 		<filter-name>FilterForSecurity</filter-name>
 		<filter-class>security.SecurityFilter</filter-class>
 	</filter>
-
 	<filter-mapping>
 		<filter-name>FilterForSecurity</filter-name>
 		<url-pattern>/secure/*</url-pattern>
 	</filter-mapping>
-	<!--default-->
-	<dispatcher>
-		REQUEST
-	</dispatcher>
-	<dispatcher>
-		FORWARD
-	</dispatcher>
-	</filter-mapping>
 
-		</web-app>
+</web-app>

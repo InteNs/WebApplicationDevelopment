@@ -1,14 +1,132 @@
-.blogPost:nth-child(even) {
-    margin: 10px;
-    padding: 10px;
-    width: 400px;
-    background-color: white;
-    border: 1px solid lightgrey;
+body {
+    padding: 3%;
 }
-
+/*Forms*/
+.form {
+    font-size: 80%;
+}
+#loginForm {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+.bbox {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.navItems {
+    width: 30%;
+    height: 20%;
+    padding: 1%;
+    margin: 1%;
+}
+#rememberUserName {
+    font-size: 65%;
+    padding: 1%;
+    margin: 1%;
+}
+/*navBar*/
+.navBar {
+    display: inline;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 95%;
+    height: 2vh;
+    padding: 2%;
+    opacity: 0.6;
+}
+.navPadding {
+    margin: 2%;
+}
+/*float orientation*/
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+/*containers*/
+.containerCenter {
+    margin: 2%;
+    margin-top: 8%;
+    padding: 2%;
+    height: 70vh;
+    width: 40%;
+    border: 1px solid darkgrey;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid darkgrey;
+    overflow: scroll;
+}
+.containerRight {
+    margin: 2%;
+    margin-top: 8%;
+    padding: 2%;
+    height: 70vh;
+    width: 40%;
+    border: 1px solid darkgrey;
+    float: right;
+    overflow: scroll;
+}
+.containerLeft {
+    margin: 2%;
+    margin-top: 8%;
+    padding: 2%;
+    height: 70vh;
+    width: 40%;
+    border: 1px solid darkgrey;
+    float: left;
+    overflow: scroll;
+}
+/*blogPosts*/
+.blogPost {
+    margin: 5%;
+    padding: 2%;
+    width: 90%;
+    border: 1px solid darkgrey;
+}
+.blogPost:nth-child(even) {
+    background-color: white;
+}
 .blogPost:nth-child(odd) {
-    margin: 10px;
-    padding: 10px;
-    width: 400px;
     background-color: lightgrey;
+}
+/*messages*/
+#messagesObject {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+}
+.messageWidth {
+    width: 80%;
+}
+.message {
+    padding:8px 10px 6px 10px;
+    border: 1px solid darkgrey;
+    background-color: white;
+    border-radius: 2px;
+    /*margin-bottom: -10px;*/
+}
+.info {
+    color: #0000d7;
+}
+.warning {
+    color: #d7d700;
+}
+.danger {
+    color: #d70000;
+}
+.welcome {
+    fontsize: 12px;
+}
+.remove {
+    display: inline-block;
+    margin-left: 4px;
+    font-size:25px;
+    font-weight:900;
+    color: black;
+}
+.remove:hover {
+    opacity:0.8;
 }

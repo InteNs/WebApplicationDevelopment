@@ -16,7 +16,7 @@ public class SecurityFilter implements Filter {
         HttpServletRequest r2 = (HttpServletRequest)req;
 
         if(r2.getSession().getAttribute("user") == null) {
-            r2.getRequestDispatcher("/login.jsp").forward(req, resp);
+            //r2.getRequestDispatcher("/login.jsp").forward(req, resp);
         } else{
             chain.doFilter(req, resp);
         }

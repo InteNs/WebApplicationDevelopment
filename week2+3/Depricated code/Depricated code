@@ -87,3 +87,17 @@ public void removeLineFromFile(String file, String lineToRemove) {
             ex.printStackTrace();
         }
     }
+
+registration.jsp
+
+
+
+            if (errorMessage != null) errorMessage = (String) request.getAttribute("errorMessage");
+            if (userNameNull != null) userNameNull = nullError;
+            if (realNameNull != null) realNameNull = nullError;
+            if (emailNull != null) emailNull = nullError;
+            if (emailRepeatError != null) emailRepeatError = nullError;
+            if (passwordNull != null) passwordNull = nullError;
+            if (passwordRepeatError != null) passwordRepeatError = nullError;
+            if (addressNull != null) addressNull = nullError;
+            if (countryNull != null) countryNull = nullError;

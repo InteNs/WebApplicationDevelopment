@@ -18,13 +18,10 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         // Request dispatcher handles request.
         RequestDispatcher rd;
-
         // Initialize servlet context
         ServletContext servletContext = req.getServletContext();
-
         // Initialize user
         User user = null;
-
         // Create default user and user Attribute
         boolean exists = false;
         for(User savedUser : (ArrayList<User>)req.getServletContext().getAttribute("usersList")){
@@ -35,17 +32,13 @@ public class LoginServlet extends HttpServlet {
             users.add(user);
             servletContext.setAttribute("usersList", users);
         }
-
         // User credentials
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-
         // Logged in users attribute
         ArrayList loggedInUsers = (ArrayList) servletContext.getAttribute("loggedInUsers");
-
         // Boolean login attempt
         boolean success = false;
-
         // Checks all users for match
         for(User savedUser : (ArrayList<User>)req.getServletContext().getAttribute("usersList")){
             if (savedUser.getUserName().equals(username)&& savedUser.getPassword().equals(password)){
@@ -53,17 +46,11 @@ public class LoginServlet extends HttpServlet {
                 user = savedUser;
             }
         }
-
         // Login attempt successful
         if (success) {
             // Log user login's
-            Logger.getLogger("listener.SessionCounterListener").info("User "
-                    +user.getUserName()
-                    +" login!\nAmount of online users: "
-                    +SessionCounterListener.getTotalActiveSession()
-                    +".");
-            // Dispatched to welcome page
-            rd = req.getRequestDispatcher("/secure/welcome.jsp");
+            Logger.getLogger("listener.SessionCounterListener").info(
+                    "User "+user.getUserName()+" login!\nAmount of online users: "+SessionCounterListener.getTotalActiveSession()+".");
             // Adds user to session
             req.getSession().setAttribute("loggedInUser", user);
             // Add logged in users
@@ -71,7 +58,7 @@ public class LoginServlet extends HttpServlet {
                 loggedInUsers = new ArrayList();
             loggedInUsers.add(user);
             servletContext.setAttribute("loggedInUsers", loggedInUsers);
-
+            // Cookie username
             if (req.getParameter("rememberUserName") != null) {
                 // Creates cookie with username
                 Cookie c = new Cookie("cookieUserName", user.getUserName());
@@ -80,17 +67,16 @@ public class LoginServlet extends HttpServlet {
                 // Adds cookie
                 resp.addCookie(c);
             }
-
-            // Login attempt failed
+            // Dispatched to welcome page
+            req.setAttribute("welcomeMessage", "U bent succesvol ingelogd en kan nu beginnen met bloggen.");
+            rd = req.getRequestDispatcher("/secure/welcome.jsp");
+          // Login attempt failed
         } else {
             // Log login attempt fails
-            Logger.getLogger("listener.SessionCounterListerer").warning("Login failed for "
-                    + user.getUserName()
-                    +"!");
-            req.setAttribute("message", "<div style=\"color: red;\">Verkeerde username en/of verkeerd wachtwoord.</div>");
+            Logger.getLogger("listener.SessionCounterListerer").warning("Login failed for "+user.getUserName()+"!");
+            req.setAttribute("loginFailed", "Verkeerde combinatie van gebruikersnaam en wachtwoord.");
             rd = req.getRequestDispatcher("index.jsp");
         }
-
         // Kill servlet and follow request dispatcher
         rd.forward(req, resp);
     }
