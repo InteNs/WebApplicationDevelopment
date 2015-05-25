@@ -22,6 +22,6 @@ public class BlogPost implements Serializable {
 
     @Override
     public String toString() {
-        return "<div style=\"border: 1px solid black;\">"+info+blogPost+"<br/><br/></div>";
+        return "<div class=\"blogPost\">"+info+blogPost+"<br/><br/></div>";
     }
 }

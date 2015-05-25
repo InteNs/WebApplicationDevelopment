@@ -1,7 +1,9 @@
 package login;
+import listener.SessionCounterListener;
 import model.User;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -12,21 +14,27 @@ import javax.servlet.http.HttpServletResponse;
 
 public class LoginServlet extends HttpServlet {
 
-	protected void doPost( HttpServletRequest req, HttpServletResponse resp)
-			 throws ServletException, IOException {
+    protected void doPost( HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
         // Request dispatcher handles request.
         RequestDispatcher rd;
+
         // Initialize servlet context
         ServletContext servletContext = req.getServletContext();
-        // Create default user and user Attribute
-        User user = new User(getServletConfig().getInitParameter("userName"), null, getServletConfig().getInitParameter("password"), "admin", null, null);
-        ArrayList users = (ArrayList) servletContext.getAttribute("usersList");
-        if(users == null) {
-            users = new ArrayList();
-        }
-        users.add(user);
-        servletContext.setAttribute("usersList", users);
 
+        // Initialize user
+        User user = null;
+
+        // Create default user and user Attribute
+        boolean exists = false;
+        for(User savedUser : (ArrayList<User>)req.getServletContext().getAttribute("usersList")){
+            if (savedUser.getUserName().equals("admin")) exists = true;
+        } if (!exists) {
+            user = new User(getServletConfig().getInitParameter("userName"), null, getServletConfig().getInitParameter("password"), "admin", null, null);
+            ArrayList<User> users = (ArrayList) servletContext.getAttribute("usersList");
+            users.add(user);
+            servletContext.setAttribute("usersList", users);
+        }
 
         // User credentials
         String username = req.getParameter("username");
@@ -35,7 +43,7 @@ public class LoginServlet extends HttpServlet {
         // Logged in users attribute
         ArrayList loggedInUsers = (ArrayList) servletContext.getAttribute("loggedInUsers");
 
-        // Login attempt
+        // Boolean login attempt
         boolean success = false;
 
         // Checks all users for match
@@ -48,8 +56,14 @@ public class LoginServlet extends HttpServlet {
 
         // Login attempt successful
         if (success) {
+            // Log user login's
+            Logger.getLogger("listener.SessionCounterListener").info("User "
+                    +user.getUserName()
+                    +" login!\nAmount of online users: "
+                    +SessionCounterListener.getTotalActiveSession()
+                    +".");
             // Dispatched to welcome page
-            rd = req.getRequestDispatcher("welcome.jsp");
+            rd = req.getRequestDispatcher("/secure/welcome.jsp");
             // Adds user to session
             req.getSession().setAttribute("loggedInUser", user);
             // Add logged in users
@@ -67,13 +81,17 @@ public class LoginServlet extends HttpServlet {
                 resp.addCookie(c);
             }
 
-        // Login attempt failed
+            // Login attempt failed
         } else {
-            req.setAttribute("message","<div style=\"color: red;\">Verkeerde username en/of verkeerd wachtwoord.</div>");
+            // Log login attempt fails
+            Logger.getLogger("listener.SessionCounterListerer").warning("Login failed for "
+                    + user.getUserName()
+                    +"!");
+            req.setAttribute("message", "<div style=\"color: red;\">Verkeerde username en/of verkeerd wachtwoord.</div>");
             rd = req.getRequestDispatcher("index.jsp");
         }
 
         // Kill servlet and follow request dispatcher
         rd.forward(req, resp);
-	}
+    }
 }
