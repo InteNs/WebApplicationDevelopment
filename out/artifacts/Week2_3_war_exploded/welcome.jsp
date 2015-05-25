@@ -10,10 +10,23 @@
     <title>Mijn account: <%=loggedInUser.getRealName()%></title>
 </head>
 <body>
-<h1>Welkom <%=loggedInUser.getRealName()%>,</h1>
-<p>Je bent nu ingelogged.</p>
+<div>
+Welkom <%=loggedInUser.getRealName()%>,
+<p>Je bent nu ingelogged en kunt beginnen met posten van blogs.</p>
 <form action="logout" method="post">
     <button type="submit">Uitloggen</button>
 </form>
+</div>
+
+<div>
+    <!-- add blogPosts -->
+    <jsp:include page="addBlogPost.jsp" />
+</div>
+
+<div>
+    <!-- blogPosts -->
+    <jsp:include page="blogPosts.jsp" />
+</div>
+
 </body>
 </html>

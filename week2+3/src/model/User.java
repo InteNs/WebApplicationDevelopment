@@ -1,8 +1,11 @@
 package model;
 
+import java.util.ArrayList;
+
 public class User {
 
     private String userName,email,password,realName,address,country;
+    private ArrayList<BlogPost> blogPosts;
 
     public User(String userName, String email, String password, String realName, String address, String country) {
         this.userName = userName;
@@ -11,6 +14,7 @@ public class User {
         this.realName = realName;
         this.address = address;
         this.country = country;
+        this.blogPosts = new ArrayList<>();
     }
 
     public String getUserName() {
@@ -59,6 +63,14 @@ public class User {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public ArrayList<BlogPost> getBlogPosts() {
+        return blogPosts;
+    }
+
+    public void setBlogPosts(ArrayList<BlogPost> blogPosts) {
+        this.blogPosts = blogPosts;
     }
 
     @Override
