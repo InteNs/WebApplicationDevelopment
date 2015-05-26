@@ -1,0 +1,49 @@
+/*loginPanel should be imported in the root of the html*/
+/*Location of the loginPanel on screen*/
+.containerBlogPostPanel {
+    /*fixed width/height based on window*/
+    height: 100%;
+    /*element in bottem-right corner*/
+    position: absolute;
+    top: 0;
+    left: 20%;
+    right: 20%;
+    /*extra*/
+    padding: 1%;
+    /*/!*TODO: hide scrollbar before implementation (takes up space for layout)*!/*/
+    /*overflow: scroll;*/
+}
+.blogPostPanelBox {
+    /*grow with size*/
+    height: auto;
+    padding: 2% 10% 2% 10%;
+    align-content: center;
+}
+/*Markup*/
+.blogPost {
+    border-radius: 4px;
+    padding: 2%;
+    line-height: 1.5;
+    letter-spacing: 0.025em;
+}
+.blogPostTitle {
+    font-weight: 600;
+    font-size: 25px;
+    border-radius: 4px;
+    padding: 2%;
+    line-height: 1.5;
+    letter-spacing: 0.025em;
+    text-align: center;
+}
+/*blogPosts*/
+.blogPost {
+    /*message colors*/
+    color: #454545;
+    background-color: #cccccc;
+    border-color: #878787;
+    /*blurred border*/
+    box-shadow: 0 0 5px 1px #878787;
+}
+.blogPostFooter {
+    font-size: 10px;
+}

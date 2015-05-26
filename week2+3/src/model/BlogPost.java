@@ -5,15 +5,15 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class BlogPost implements Serializable {
-    private String blogPost;
-    private String info;
+    private String  blogPost,userName,date,time;
+    private LocalDate ld = LocalDate.now();
+    private LocalTime lt = LocalTime.now();
 
     public BlogPost(String blogPost, User user) {
-        LocalDate ld = LocalDate.now();
-        LocalTime lt = LocalTime.now();
-        this.blogPost = blogPost;
-        // Username + date + time caption
-        info = user.getUserName()+" heeft het volgende gepost op "+ ld.toString()+" om "+ lt.getHour()+":"+lt.getMinute()+":"+lt.getSecond()+"<br/><br/>";
+        this.blogPost   = blogPost;
+        userName        = user.getUserName();
+        date            = ld.toString();
+        time            = lt.getHour()+":"+lt.getMinute()+":"+lt.getSecond();
     }
 
     public void setBlogPost(String blogPost) {
@@ -22,6 +22,18 @@ public class BlogPost implements Serializable {
 
     @Override
     public String toString() {
-        return "<div class=\"blogPost\">"+info+blogPost+"<br/><br/></div>";
+        return  "<div class=\"blogPostPanelBox\">" +
+                "<div class=\"blogPost\">" +
+                "<div><h4>Blogbericht:</h4></div>" +
+                blogPost +
+                "<div class=\"blogPostFooter\">" +
+                "Geschreven door: " +
+                userName + "." +
+                "<br/>" +
+                "Geposted op: " +
+                date + " om " + time + ".<br/>" +
+                "</div>" +
+                "</div>" +
+                "</div>";
     }
 }

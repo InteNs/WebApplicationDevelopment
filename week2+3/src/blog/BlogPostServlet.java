@@ -18,8 +18,6 @@ public class BlogPostServlet extends HttpServlet{
             throws ServletException, IOException {
         // Request dispatcher handles request.
         RequestDispatcher rd;
-        // Initialize servlet context
-        ServletContext servletContext = req.getServletContext();
 
         // Get current user.
         User user = (User) req.getSession().getAttribute("loggedInUser");

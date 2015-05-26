@@ -1,6 +1,5 @@
 package listener;
 
-import com.sun.xml.internal.ws.api.policy.PolicyResolver;
 import model.User;
 
 import javax.servlet.ServletContext;
