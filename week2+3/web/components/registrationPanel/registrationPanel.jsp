@@ -1,17 +1,5 @@
-<%--userFeedback should be imported in the root of the html--%>
 <%--JSP imports--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-  String  errorMessage        =   (String) request.getAttribute("errorMessage"),
-          userNameNull        =   (String) request.getAttribute("userNameNull"),
-          realNameNull        =   (String) request.getAttribute("realNameNull"),
-          emailNull           =   (String) request.getAttribute("emailNull"),
-          emailRepeatError    =   (String) request.getAttribute("emailRepeatError"),
-          passwordNull        =   (String) request.getAttribute("passwordNull"),
-          passwordRepeatError =   (String) request.getAttribute("passwordRepeatError"),
-          addressNull         =   (String) request.getAttribute("addressNull"),
-          countryNull         =   (String) request.getAttribute("countryNull");
-%>
 <%--HTML--%>
 <!DOCTYPE html>
 <head>
@@ -63,16 +51,6 @@
     </div>
     <div class="loginPanelBox">
       <input class="loginItem" type="button" value="Loginscherm" onclick="location.href='index.jsp'"/>
-    </div>
-    <div class="loginPanelBox">
-      <%=userNameNull%>
-      <%=realNameNull%>
-      <%=passwordNull%>
-      <%=passwordRepeatError%>
-      <%=emailNull%>
-      <%=emailRepeatError%>
-      <%=addressNull%>
-      <%=countryNull%>
     </div>
     <%-- ^^ Place new form-items here ^^ --%>
   </form>

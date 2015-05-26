@@ -21,6 +21,9 @@ public class LogoutServlet extends HttpServlet {
         ServletContext servletContext = req.getServletContext();
 
         if (req.getSession().getAttribute("loggedInUser") != null) {
+            // Error messages
+            String notificationInit = "<div class=\"notificationBox\"><div class=\"notificationMessage notificationInfo";
+            String notificationLogoutSuccess = notificationInit+"\">U bent nu uitgelogd.</div></div>";
             // Log logout users.
             Logger.getLogger("listener.SessionCounterListener").info("User "
                     + req.getSession().getAttribute("loggedInUser")
@@ -29,9 +32,8 @@ public class LogoutServlet extends HttpServlet {
                     + ".");
             ((ArrayList<User>) servletContext.getAttribute("loggedInUsers")).remove(req.getSession().getAttribute("loggedInUser"));
             req.getSession().invalidate();
-            req.setAttribute("logoutMessage", "<div style=\"color: green;\">Succesvol uitgelogged.</div>");
+            req.setAttribute("logoutMessage", notificationLogoutSuccess);
         }
-
         rd = req.getRequestDispatcher("index.jsp");
         rd.forward(req, resp);
     }

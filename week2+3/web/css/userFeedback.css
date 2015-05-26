@@ -11,8 +11,7 @@
     /*extra*/
     padding: 1%;
     border-left: solid 1px #d3d3d3;
-    /*/!*TODO: hide scrollbar before implementation (takes up space for layout)*!/*/
-    /*overflow: scroll;*/
+    overflow: scroll;
 }
 .notificationBox {
     /*grow with message size*/

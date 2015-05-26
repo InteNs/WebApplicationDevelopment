@@ -10,8 +10,7 @@
     right: 20%;
     /*extra*/
     padding: 1%;
-    /*/!*TODO: hide scrollbar before implementation (takes up space for layout)*!/*/
-    /*overflow: scroll;*/
+    overflow: scroll;
 }
 .blogPostPanelBox {
     /*grow with size*/

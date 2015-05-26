@@ -12,7 +12,9 @@
             passwordNull        =   (String) request.getAttribute("passwordNull"),
             passwordRepeatError =   (String) request.getAttribute("passwordRepeatError"),
             addressNull         =   (String) request.getAttribute("addressNull"),
-            countryNull         =   (String) request.getAttribute("countryNull");
+            countryNull         =   (String) request.getAttribute("countryNull"),
+            logoutMessage       =   (String) request.getAttribute("logoutMessage"),
+            loginMessage        =   (String) request.getAttribute("loginMessage");
     String notificationType     = "notificationSuccess";
     String notificationMessage  = "Random test bericht om de notificatie te ontwikkelen";
     String sessionCount =
@@ -23,14 +25,17 @@
                     "</div>" +
                     "</div>";
 //    TODO: Make Arraylist with modular notifications
-    String notification =
-            "<div class=\"notificationBox\">" +
-                    "<div class=\"notificationMessage " +
-                    notificationType +
-                    "\">" +
-                    notificationMessage +
-                    "</div>" +
-                    "</div>";
+    if (errorMessage == null) errorMessage                  = "";
+    if (userNameNull == null) userNameNull                  = "";
+    if (realNameNull == null) realNameNull                  = "";
+    if (emailNull == null) emailNull                        = "";
+    if (emailRepeatError == null) emailRepeatError          = "";
+    if (passwordNull == null) passwordNull                  = "";
+    if (passwordRepeatError == null) passwordRepeatError    = "";
+    if (addressNull == null) addressNull                    = "";
+    if (countryNull == null) countryNull                    = "";
+    if (logoutMessage == null) logoutMessage                = "";
+    if (loginMessage == null) loginMessage                = "";
 %>
 <%--HTML--%>
 <!DOCTYPE html>
@@ -45,10 +50,19 @@
     <div class="notificationBox">
         <h2>Berichten</h2>
     </div>
-    <%=sessionCount%>
     <%--containerVisitorCount--%>
-    <%=notification%>
-    <%--containerNotifications--%>
+    <%=sessionCount%>
+    <%--Errors Registration--%>
+    <%=userNameNull%>
+    <%=realNameNull%>
+    <%=emailNull%>
+    <%=emailRepeatError%>
+    <%=passwordNull%>
+    <%=passwordRepeatError%>
+    <%=addressNull%>
+    <%=countryNull%>
+    <%=logoutMessage%>
+    <%=loginMessage%>
 </div>
 </body>
 </html>

@@ -20,6 +20,9 @@ public class LoginServlet extends HttpServlet {
         RequestDispatcher rd;
         // Initialize servlet context
         ServletContext servletContext = req.getServletContext();
+        // Error messages
+        String notificationInit = "<div class=\"notificationBox\"><div class=\"notificationMessage notificationError";
+        String notificationLoginFailed = notificationInit+"\">Gebruikersnaam en/of wachtwoord incorrect.</div></div>";
         // Initialize user
         User user = null;
         // Create default user and user Attribute
@@ -73,8 +76,8 @@ public class LoginServlet extends HttpServlet {
           // Login attempt failed
         } else {
             // Log login attempt fails
-            Logger.getLogger("listener.SessionCounterListerer").warning("Login failed for "+user.getUserName()+"!");
-            req.setAttribute("loginFailed", "Verkeerde combinatie van gebruikersnaam en wachtwoord.");
+            Logger.getLogger("listener.SessionCounterListerer").warning("Login failed for "+username+"!");
+            req.setAttribute("loginMessage", notificationLoginFailed);
             rd = req.getRequestDispatcher("index.jsp");
         }
         // Kill servlet and follow request dispatcher
