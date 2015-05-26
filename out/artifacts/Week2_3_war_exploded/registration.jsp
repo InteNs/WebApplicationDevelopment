@@ -4,10 +4,12 @@
     <%--Messages--%>
 <% String   errorMessage =          (String) request.getAttribute("errorMessage"),
             userNameNull =          (String) request.getAttribute("userNameNull"),
+            userNameUsed =          (String) request.getAttribute("userNameUsed"),
             realNameNull =          (String) request.getAttribute("realNameNull"),
             emailNull =             (String) request.getAttribute("emailNull"),
             emailRepeatError =      (String) request.getAttribute("emailRepeatError"),
-            passwordNull =          (String) request.getAttribute("passwordNull"),
+            emailUsed =             (String) request.getAttribute("emailUsed"),
+            passwordNull =          (String) request.getAttribute("paswordNull"),
             passwordRepeatError =   (String) request.getAttribute("passwordRepeatError"),
             addressNull =           (String) request.getAttribute("addressNull"),
             countryNull =           (String) request.getAttribute("countryNull");%>
@@ -41,6 +43,7 @@
             </div>
             <div class="danger">
                 <%if(userNameNull != null)out.print(userNameNull);%>
+                <%if(userNameUsed != null)out.print(userNameUsed);%>
             </div>
         </div>
         <!-- Realname -->
@@ -81,6 +84,7 @@
             </div>
             <div class="danger">
                 <%if(emailNull != null)out.print(emailNull);%>
+                <%if(emailUsed != null)out.print(emailUsed);%>
             </div>
         </div>
         <!-- Email repeat -->

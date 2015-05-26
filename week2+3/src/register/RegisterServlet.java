@@ -1,15 +1,11 @@
 package register;
 import java.io.*;
-
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Properties;
 
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.RequestDispatcher;
@@ -19,10 +15,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sun.mail.imap.IMAPStore;
+import com.sun.mail.smtp.SMTPTransport;
+import mail.OAuth2Authenticator;
 import model.User;
 
 public class RegisterServlet extends HttpServlet {
-
+	ArrayList<User> users = null;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		RequestDispatcher rd;
@@ -33,7 +32,8 @@ public class RegisterServlet extends HttpServlet {
 		final String repeatError 		= "velden komen niet overeen.";
 		// User attributes
 		User   user;
-		ArrayList<User> users = (ArrayList<User>) servletContext.getAttribute("usersList");
+
+		users = (ArrayList<User>) servletContext.getAttribute("usersList");
 		System.out.println(users);
 		if(users == null)
 			users = new ArrayList<>();
@@ -51,7 +51,9 @@ public class RegisterServlet extends HttpServlet {
 				&& password.equals(req.getParameter("passwordRepeat"))
 				&& !Objects.equals(realName, "")
 				&& !Objects.equals(address, "")
-				&& !Objects.equals(country, "")){
+				&& !Objects.equals(country, "")
+				&& !doesExist(email)
+				&& !doesExist(userName)){
 			// create user
 			user = new User(userName, email, password, realName, address, country);
 			// add user to arraylist in servletContext
@@ -61,13 +63,17 @@ public class RegisterServlet extends HttpServlet {
 			// dispatch to login with message
 			req.setAttribute("registrationSuccess", "Registratie geslaagd.");
 			rd = req.getRequestDispatcher("index.jsp");
-			sendEmail();
+			try {
+				sendEmail();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			rd.forward(req, resp);
 		} else {
 			// already in use errors
 			for(User userI : users) {
-				if (email.equals(userI.getEmail())) System.out.println("email in use");/*req.setAttribute("emailUsed", inUseError)*/;
-				if (userName.equals(userI.getUserName())) System.out.println("username in use"); /*req.setAttribute("userNameUsed",inUseError)*/;
+				if (doesExist(email))req.setAttribute("emailUsed", inUseError);
+				if (doesExist(userName))req.setAttribute("userNameUsed",inUseError);
 			}
 
 			// Null errors
@@ -78,7 +84,7 @@ public class RegisterServlet extends HttpServlet {
 			if (Objects.equals(address, "")) 	req.setAttribute("addressNull", 	nullError);
 			if (Objects.equals(country, "")) 	req.setAttribute("countryNull", 	nullError);
 			// Repeat errors
-			if (!password.equals(req.getParameter("emailRepeat")))
+			if (!email.equals(req.getParameter("emailRepeat")))
 				req.setAttribute("emailRepeatError", 	"Email"+repeatError);
 			if (!password.equals(req.getParameter("passwordRepeat")))
 				req.setAttribute("passwordRepeatError", "Wachtwoord"+repeatError);
@@ -90,51 +96,83 @@ public class RegisterServlet extends HttpServlet {
 			rd.forward(req, resp);
 		}
 	}
-	private void sendEmail() {
-		// Recipient's email ID needs to be mentioned.
-		String to = "mark.havekes@student.hu.nl";
+	private boolean doesExist(String attribute){
+		return users.stream()
+				.anyMatch(user -> attribute.equals(user.getUserName())||attribute.equals(user.getEmail()));
+	}
+	private void sendEmail() throws Exception {
+		String email = "mark.havekes@gmail.com";
+		String oauthToken = "-----BEGIN PRIVATE KEY-----\nMIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJgFp46pFR0pgJeI\nzVDDUMrVTST4yXAIyPB/HgKQY72dzRexboxTxc9ZminxEvty+cOTH3V4T1KlzUeZ\n2+9B1LOvoXIhHtIz3nRMqF6Ed4T+SyNb2dx6KE45Y/ShzLgOql6L6pwnHVwI0LjL\nXCP0QPTqVxmxG+11xX6v1qrR69rBAgMBAAECgYAMMlfxICurfUrt3XHriuAOhfJ8\nhuFSdcH5WZmExyTZb7GmtvuRkp8KNbwipU7KkbzsLf+WIyLqFJdVqUh196gi6spu\nzEYclj7R0Z/Hd6Rmsi3ROcEFnT9477EQqF+FYeolvQWqVPMobkrsuW13xlejscRJ\nfURhtN6olMxHxodLSQJBAMbCxZtPG63oNmJmrQTgQEalymAUC/FJPEEm6ivep60K\nUbWvIxAvTL7xci++hOz3Yee0GVFZI2lfSnBJJ7ctEnMCQQDDzSqW57kJpHGAn7Ry\npXgBh2KMEjAL+7CJnrD//+VFga+XdEY6yfat6HoaMcSf5zkpZJ66bHebnudAMUUJ\ndSz7AkAlvLc+DKAJvcwNlMcG5PjvMO0insvBrRD2ocfWOnkFfq8S2sTCfuiIXFk8\nvWSJhVKeZnBkJJN3nzMH7KvQuIsHAkEAiC1NDZ8j5jzkY9yvF31VtVp/g4OyvuLR\nqSUhXSqQPoMvqFpJ7eFBGzqwkT9DzSJ3cv50FpwRo74kf1TE+wrvuQJADZCt8TCc\n72HMNpOWfhpGuXM23rrAnNcG+REc0jBWdHNuXAELNRu1amAgL78jJR4ZNUKu8GN7\nZXF0+Dqbd/S9sw\u003d\u003d\n-----END PRIVATE KEY-----\n";
+		OAuth2Authenticator.initialize();
 
-		// Sender's email ID needs to be mentioned
-		String from = "mark.havekes@yahoo.com";
+		IMAPStore imapStore = OAuth2Authenticator.connectToImap("imap.gmail.com",
+				993,
+				email,
+				oauthToken,
+				true);
+		System.out.println("Successfully authenticated to IMAP.\n");
+		SMTPTransport smtpTransport = OAuth2Authenticator.connectToSmtp("smtp.gmail.com",
+				587,
+				email,
+				oauthToken,
+				true);
+		System.out.println("Successfully authenticated to SMTP.");
 
-		// Assuming you are sending email from localhost
-		String host = "smtp.mail.yahoo.com";
-
-		// Get system properties
-		Properties properties = System.getProperties();
-
-		// Setup mail server
-		properties.setProperty("mail.smtp.host", host);
-
-		//setup auth
-		properties.setProperty("mail.user", "mark.havekes@yahoo.com");
-		properties.setProperty("mail.password", "jIvWNo02pBndyjdZjL6D");
-
-		// Get the default Session object.
-		Session session = Session.getDefaultInstance(properties);
-
-		try {
-			// Create a default MimeMessage object.
-			MimeMessage message = new MimeMessage(session);
-
-			// Set From: header field of the header.
-			message.setFrom(new InternetAddress(from));
-
-			// Set To: header field of the header.
-			message.addRecipient(Message.RecipientType.TO,
-					new InternetAddress(to));
-
-			// Set Subject: header field
-			message.setSubject("yoooooooo");
-
-			// Now set the actual message
-			message.setText("verstuurd door middel van web-dev app :DDDD");
-
-			// Send message
-			Transport.send(message);
-			System.out.println("Sent message successfully....");
-		} catch (Exception mex) {
-			mex.printStackTrace();
+	}
+//	private void sendEmail() {
+//		// Recipient's email ID needs to be mentioned.
+//		String to = "mark.havekes@student.hu.nl";
+//
+//		// Sender's email ID needs to be mentioned
+//		String from = "mark.havekes@yahoo.com";
+//
+//		// Assuming you are sending email from localhost
+//		String host = "smtp.att.yahoo.com";
+//
+//		// Get system properties
+//		Properties properties = System.getProperties();
+//
+//		// Setup mail server
+//		properties.setProperty("mail.smtp.host", host);
+//		properties.setProperty("mail.smtp.port","587");
+//
+//		//setup auth
+//		//properties.setProperty("mail.smtp.auth", "true");
+//		Authenticator auth = new SMTPAuthenticator();
+//		// Get the default Session object.
+//		Session session = Session.getDefaultInstance(properties);
+//
+//		try {
+//			// Create a default MimeMessage object.
+//			MimeMessage message = new MimeMessage(session);
+//
+//			// Set From: header field of the header.
+//			message.setFrom(new InternetAddress(from));
+//
+//			// Set To: header field of the header.
+//			message.addRecipient(Message.RecipientType.TO,
+//					new InternetAddress(to));
+//
+//			// Set Subject: header field
+//			message.setSubject("yoooooooo");
+//
+//			// Now set the actual message
+//			message.setText("verstuurd door middel van web-dev app :DDDD");
+//
+//			// Send message
+//
+//			Transport.send(message,"mark.havekes@yahoo.com","jIvWNo02pBndyjdZjL6D");
+//			System.out.println("Sent message successfully....");
+//		} catch (Exception mex) {
+//			mex.printStackTrace();
+//		}
+//
+//	}
+	private class SMTPAuthenticator extends javax.mail.Authenticator {
+		public PasswordAuthentication getPasswordAuthentication() {
+			String username = "mark.havekes@yahoo.com";
+			String password = "jIvWNo02pBndyjdZjL6D";
+			return new PasswordAuthentication(username, password);
 		}
 	}
 }
