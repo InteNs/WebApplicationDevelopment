@@ -29,88 +29,88 @@
     <h4>Registratie formulier</h4>
     <!-- Error messages -->
     <div class="danger">
-        <%=errorMessage%>
+        <%if(errorMessage != null)out.print(errorMessage);%>
     </div>
     <!-- Registration form -->
     <form action="register" method="post">
         <!-- Username -->
         <div>
             <div>
-                <label for="username" value="Gebruikersnaam:"/>
+                <label for="username" value="Gebruikersnaam:"></label>
                 <input type="text" name="username" id="username" placeholder="Vul gebruikersnaam in"/>
             </div>
             <div class="danger">
-                <%=userNameNull%>
+                <%if(userNameNull != null)out.print(userNameNull);%>
             </div>
         </div>
         <!-- Realname -->
         <div>
             <div>
-                <label for="realname" value="Naam: "/>
+                <label for="realname" value="Naam: "></label>
                 <input type="text" name="realname" id="realname" placeholder="Vul naam in"/>
             </div>
             <div class="danger">
-                <%=realNameNull%>
+                <%if(realNameNull != null)out.print(realNameNull);%>
             </div>
         </div>
         <!-- Password -->
         <div>
             <div>
-                <label for="password" value="Wachtwoord: "/>
+                <label for="password" value="Wachtwoord: "></label>
                 <input type="password" name="password" id="password" placeholder="Vul wachtwoord in"/>
             </div>
             <div class="danger">
-                <%=passwordNull%>
+                <%if(passwordNull != null)out.print(passwordNull);%>
             </div>
         </div>
         <!-- Password repeat -->
         <div>
             <div>
-                <label for="passwordRepeat" value="Herhaal wachtwoord: "/>
+                <label for="passwordRepeat" value="Herhaal wachtwoord: "></label>
                 <input type="password" name="passwordRepeat" id="passwordRepeat" placeholder="Herhaal wachtwoord"/>
             </div>
             <div class="danger">
-                <%=passwordRepeatError%>
+                <%if(passwordRepeatError != null)out.print(passwordRepeatError);%>
             </div>
         </div>
         <!-- Email -->
         <div>
             <div>
-                <label for="email" value="Emailadres: "/>
+                <label for="email" value="Emailadres: "></label>
                 <input type="email" name="email" id="email" placeholder="Vul emailadres in"/>
             </div>
             <div class="danger">
-                <%=emailNull%>
+                <%if(emailNull != null)out.print(emailNull);%>
             </div>
         </div>
         <!-- Email repeat -->
         <div>
             <div>
-                <label for="emailRepeat" value="Herhaal email: "/>
+                <label for="emailRepeat" value="Herhaal email: "></label>
                 <input type="text" name="emailRepeat" id="emailRepeat" placeholder="Herhaal email"/>
             </div>
             <div class="danger">
-                <%=emailRepeatError%>
+                <%if(emailRepeatError != null)out.print(emailRepeatError);%>
             </div>
         </div>
         <!-- Address -->
         <div>
             <div>
-                <label for="address" value="Adres: "/>
+                <label for="address" value="Adres: "></label>
                 <input type="text" name="address" id="address" placeholder="Vul adres in"/>
             </div>
             <div class="danger">
-                <%=addressNull%>
+                <%if(addressNull != null)out.print(addressNull);%>
             </div>
         </div>
         <!-- Country -->
         <div>
             <div>
-                <label for="country" value="Land: "/>
+                <label for="country" value="Land: "></label>
                 <input type="text" name="country" id="country" placeholder="Vul land in"/>
             </div>
             <div class="danger">
-                <%=countryNull%>
+                <%if(countryNull != null)out.print(countryNull);%>
             </div>
         </div>
         <!-- Buttons -->
@@ -121,4 +121,3 @@
     </form>
 </div>
 </body>
-</html>

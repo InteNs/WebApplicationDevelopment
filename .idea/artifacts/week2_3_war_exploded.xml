@@ -6,6 +6,10 @@
         <element id="directory" name="classes">
           <element id="module-output" name="week2+3" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="javax.mail" />
+          <element id="library" level="project" name="activation" />
+        </element>
       </element>
       <element id="javaee-facet-resources" facet="week2+3/web/Web" />
     </root>

@@ -7,28 +7,28 @@
 <%--JSP Imports--%>
 <%@ page import="listener.SessionCounterListener"%>
 <%--JSP Servlets--%>
-	<%--SessionCount--%>
+<%--SessionCount--%>
 <%  String sessionCount = "<div id=\"mes1\" class=\"info message navItems navPadding messageWidth\">Aantal bezoekers website:"
 		+ SessionCounterListener.getTotalActiveSession()+"<div class=\"remove\" onclick=\"hide(mes1)\">x</div></div>";%>
-	<%--Cookies--%>
+<%--Cookies--%>
 <% 	Cookie[] cookies = request.getCookies();
 	String cookieUserName = "";
-		if (cookies != null)
-			for (Cookie c : cookies)
-				if(c.getName().equals("cookieUserName")) cookieUserName = c.getValue();%>
-	<%--Messages--%>
+	if (cookies != null)
+		for (Cookie c : cookies)
+			if(c.getName().equals("cookieUserName")) cookieUserName = c.getValue();%>
+<%--Messages--%>
 <%  Object logoutMessage = request.getAttribute("logoutMessage");
-		String logout = "";
-			if (logoutMessage != null) { logout = "<div id=\"mes2\" class=\"info message navItems navPadding messageWidth\">"
-					+(String) logoutMessage+"<div class=\"remove\" onclick=\"hide(mes2)\">x</div></div>";} %>
+	String logout = "";
+	if (logoutMessage != null) { logout = "<div id=\"mes2\" class=\"info message navItems navPadding messageWidth\">"
+			+(String) logoutMessage+"<div class=\"remove\" onclick=\"hide(mes2)\">x</div></div>";} %>
 <%  Object registrationSuccess = request.getAttribute("registrationSuccess");
-		String registration = "";
-			if (registrationSuccess != null) { registration = "<div id=\"mes3\" class=\"info message navItems navPadding messageWidth\">"
-					+(String) registrationSuccess+"<div class=\"remove\" onclick=\"hide(mes3)\">x</div></div>";} %>
+	String registration = "";
+	if (registrationSuccess != null) { registration = "<div id=\"mes3\" class=\"info message navItems navPadding messageWidth\">"
+			+(String) registrationSuccess+"<div class=\"remove\" onclick=\"hide(mes3)\">x</div></div>";} %>
 <%  Object loginFailed = request.getAttribute("loginFailed");
-		String login = "";
-			if (loginFailed != null) { login = "<div id=\"mes4\" class=\"danger message navItems navPadding messageWidth\">"
-					+(String) loginFailed+"<div class=\"remove\" onclick=\"hide(mes4)\">x</div></div>";} %>
+	String login = "";
+	if (loginFailed != null) { login = "<div id=\"mes4\" class=\"danger message navItems navPadding messageWidth\">"
+			+(String) loginFailed+"<div class=\"remove\" onclick=\"hide(mes4)\">x</div></div>";} %>
 <%--HTML--%>
 <!DOCTYPE html>
 <head>
@@ -40,47 +40,48 @@
 <div class="navBar">
 	<%--left side--%>
 	<div class="left" style="width:75%;">
-			<!-- Login form -->
-			<form class="form" id="loginForm" action="login" method="post">
-				<div class="left" style="width: 600px">
+		<!-- Login form -->
+		<form class="form" id="loginForm" action="login" method="post">
+			<div class="left" style="width: 600px">
 				<!-- Username -->
 				<div class="navPadding">
-				<input class="navItems bbox" type="text" name="username" id="username" placeholder="Vul gebruikersnaam in" value="<%=cookieUserName%>"/>
-				<!-- Password -->
-				<input class="navItems bbox" type="password" name='password' id="password" placeholder="Vul wachtwoord in"/>
-				<%--Registratie link pt.1--%>
-				<span class="message"> Nog geen gebruikers account? </span>
+					<input class="navItems bbox" type="text" name="username" id="username" placeholder="Vul gebruikersnaam in" value="<%=cookieUserName%>"/>
+					<!-- Password -->
+					<input class="navItems bbox" type="password" name='password' id="password" placeholder="Vul wachtwoord in"/>
+					<%--Registratie link pt.1--%>
+					<span class="message"> Nog geen gebruikers account? </span>
 				</div>
 				<!-- Submit/Remember username -->
 				<div class="navPadding">
-				<input class="navItems bbox" type="submit" value="Aanmelden"/>
-				<input type="checkbox" name="rememberUserName" id="rememberUserName"/> Gebruikersnaam onthouden
-				<%--Registratie link pt.2--%>
+					<input class="navItems bbox" type="submit" value="Aanmelden"/>
+					<input type="checkbox" name="rememberUserName" id="rememberUserName"/> Gebruikersnaam onthouden
+					<%--Registratie link pt.2--%>
 				<span style="padding-left:12px;">
 					<input class="navItems bbox" type="button" value="Registreer nu!" onclick="location.href='registration.jsp'"/>
 				</span>
 				</div>
-				</div>
-				</div>
-			</form>
-
-
+			</div>
+		</form>
 	</div>
-	<%--Right side--%>
-	<div class="right" id="messagesObject" style="width: 25%">
-		<%--SessionCounter--%>
-		<div class="right">
-			<!-- Messages -->
-			<div class="message navItems navPadding messageWidth"
-				 style="font-weight: 900;
+
+
+
+</div>
+<%--Right side--%>
+<div class="right" id="messagesObject" style="width: 25%">
+	<%--SessionCounter--%>
+	<div class="right">
+		<!-- Messages -->
+		<div class="message navItems navPadding messageWidth"
+			 style="font-weight: 900;
 				 font-size: 15px;
 				 text-decoration: underline;">Meldingen:</div>
-			<%=sessionCount%>
-			<%=registration%>
-			<%=logout%>
-			<%=login%>
-		</div>
+		<%=sessionCount%>
+		<%=registration%>
+		<%=logout%>
+		<%=login%>
 	</div>
+</div>
 </div>
 
 <!-- blogPosts -->
