@@ -1,0 +1,73 @@
+/*userFeedback should be imported in the root of the html*/
+/*Location of notifications on screen*/
+.containerNotifications {
+    /*fixed width/height based on window*/
+    width:20%;
+    height: 100%;
+    /*element in bottem-right corner*/
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    /*extra*/
+    padding: 1%;
+    border-left: solid 1px #d3d3d3;
+    overflow: scroll;
+}
+.notificationBox {
+    /*grow with message size*/
+    height: auto;
+    padding: 3%;
+}
+/*notificationTypes*/
+.notification {
+    /*message colors*/
+    color: #454545;
+    background-color: #cccccc;
+    border-color: #878787;
+    /*blurred border*/
+    box-shadow: 0 0 5px 1px #878787;
+}
+.notificationInfo {
+    /*message colors*/
+    color: #3a87ad;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    /*blurred border*/
+    box-shadow: 0 0 5px 1px #bce8f1;
+}
+.notificationError {
+    /*message colors*/
+    color: #b94a48;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    /*blurred border*/
+    box-shadow: 0 0 5px 1px #eed3d7;
+}
+.notificationSuccess {
+    /*message colors*/
+    color: #468847;
+    background-color: #dff0d8;
+    border: solid 1px #d6e9c6;
+    /*blurred border*/
+    box-shadow: 0 0 5px 1px #d6e9c6;
+}
+/*Markup*/
+.notificationMessage {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    border-radius: 4px;
+    padding: 5%;
+    line-height: 1.5;
+    letter-spacing: 0.025em;
+}
+.notificationTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+    border-radius: 4px;
+    padding: 5%;
+    line-height: 1.5;
+    letter-spacing: 0.025em;
+    text-align: center;
+}
