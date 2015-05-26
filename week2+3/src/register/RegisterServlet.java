@@ -1,5 +1,6 @@
 package register;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -11,48 +12,63 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.User;
+
 public class RegisterServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
-
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			 throws ServletException, IOException {
-        RequestDispatcher rd;
-		String email = req.getParameter("emailreg");
-		String password = req.getParameter("passwordreg");
-		String firstname = req.getParameter("firstname");
-		String surName = req.getParameter("lastname");
-		String address = req.getParameter("address");
-		String country = req.getParameter("country"); 
-		System.out.println(email + password + firstname + surName + address + country);
-		if(!email.equals("")
-                && !password.equals("")
-				&& !firstname.equals("")
-				&& !surName.equals("")
-				&& !address.equals("")
-				&& !country.equals("")
-                && req.getParameter("emailrep").equals(email)
-                && req.getParameter("passwordrep").equals(password)){
-            ServletContext context = req.getServletContext();
-			User user = new User(null, email,password,firstname,surName,address,country);
-            if(context.getAttribute("users") != null) ((ArrayList<User>) context.getAttribute("users")).add(user);
-            else {
-                context.setAttribute("users",new ArrayList<User>());
-                ((ArrayList<User>)context.getAttribute("users")).add(user);
-            }
-            System.out.println(context.getAttribute("users"));
-            //String file = req.getServletContext().getRealPath("/")+"users.txt";
-            //BufferedWriter out = new BufferedWriter(new FileWriter(file,true));
-			//out.write(email +"-"+ password +"-"+ firstname +"-"+ surName +"-"+ address +"-"+ country+ "\n");
-            //out.close();
-            req.setAttribute("succesReg", "<div class=\"alert alert-success\" role=\"alert\" style=\"margin-top:20px;\">Registratie gelukt.</div>");
-            rd = req.getRequestDispatcher("index.jsp");
-            rd.forward(req, resp);
-		}
-		else {
-			req.setAttribute("succesReg","<div class=\"alert alert-danger\" role=\"alert\" style=\"margin-top:20px;\">Registratie mislukt.</div>");
-            rd = req.getRequestDispatcher("Registration.jsp");
-            rd.forward(req, resp);
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		RequestDispatcher rd;
+		ServletContext servletContext = req.getServletContext();
+		// Error messages
+		final String nullError 			= "Verplicht veld.";
+		final String repeatError 		= "velden komen niet overeen.";
+		// User attributes
+		User   user;
+		String userName = req.getParameter("username");
+		String email 	= req.getParameter("email");
+		String password = req.getParameter("password");
+		String realName = req.getParameter("realname");
+		String address 	= req.getParameter("address");
+		String country 	= req.getParameter("country");
+		// nullcheck
+		if(!Objects.equals(userName, "")
+				&& !Objects.equals(email, "")
+				&& email.equals(req.getParameter("emailRepeat"))
+				&& !Objects.equals(password, "")
+				&& password.equals(req.getParameter("passwordRepeat"))
+				&& !Objects.equals(realName, "")
+				&& !Objects.equals(address, "")
+				&& !Objects.equals(country, "")){
+			// create user
+			user = new User(userName, email, password, realName, address, country);
+			// add user to arraylist in servletContext
+			ArrayList users = (ArrayList) servletContext.getAttribute("usersList");
+			if(users == null)
+				users = new ArrayList();
+			users.add(user);
+			servletContext.setAttribute("usersList", users);
+			// dispatch to login with message
+			req.setAttribute("registrationSuccess", "Registratie geslaagd.");
+			rd = req.getRequestDispatcher("index.jsp");
+			rd.forward(req, resp);
+		} else {
+			// Null errors
+			if (Objects.equals(userName, "")) 	req.setAttribute("userNameNull", 	nullError);
+			if (Objects.equals(email, "")) 		req.setAttribute("emailNull", 		nullError);
+			if (Objects.equals(password, "")) 	req.setAttribute("passwordNull", 	nullError);
+			if (Objects.equals(realName, "")) 	req.setAttribute("realNameNull", 	nullError);
+			if (Objects.equals(address, "")) 	req.setAttribute("addressNull", 	nullError);
+			if (Objects.equals(country, "")) 	req.setAttribute("countryNull", 	nullError);
+			// Repeat errors
+			if (!password.equals(req.getParameter("emailRepeat")))
+				req.setAttribute("emailRepeatError", 	"Email"+repeatError);
+			if (!password.equals(req.getParameter("passwordRepeat")))
+				req.setAttribute("passwordRepeatError", "Wachtwoord"+repeatError);
+			// Main error message
+				req.setAttribute("errorMessage", "Registratie mislukt.");
+			// disppatch to registration form with error messages
+			rd = req.getRequestDispatcher("registration.jsp");
+			rd.forward(req, resp);
 		}
 	}
 }

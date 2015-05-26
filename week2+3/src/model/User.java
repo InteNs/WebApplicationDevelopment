@@ -1,84 +1,81 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
-public class User implements Serializable{
+public class User implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private String email,password,firstName,surName,address,country;
-	private UserRole userRole;
-	public User(UserRole userRole,String email, String password, String firstName,
-			String surName, String address, String country) {
-		this.userRole = userRole;
-		this.email = email;
-		this.password = password;
-		this.firstName = firstName;
-		this.surName = surName;
-		this.address = address;
-		this.country = country;
-	}
+    private String userName,email,password,realName,address,country;
+    private ArrayList<BlogPost> blogPosts;
 
-	public UserRole getUserRole() {
-		return userRole;
-	}
+    public User(String userName, String email, String password, String realName, String address, String country) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.realName = realName;
+        this.address = address;
+        this.country = country;
+        this.blogPosts = new ArrayList<>();
+    }
 
-	public void setUserRole(UserRole userRole) {
-		this.userRole = userRole;
-	}
+    public String getUserName() {
+        return userName;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public String getRealName() {
+        return realName;
+    }
 
-	public String getSurName() {
-		return surName;
-	}
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
 
-	public void setSurName(String surName) {
-		this.surName = surName;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getCountry() {
+        return country;
+    }
 
-	public String getCountry() {
-		return country;
-	}
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
-	public void setCountry(String country) {
-		this.country = country;
-	}
+    public ArrayList<BlogPost> getBlogPosts() {
+        return blogPosts;
+    }
+
+    public void setBlogPosts(ArrayList<BlogPost> blogPosts) {
+        this.blogPosts = blogPosts;
+    }
 
     @Override
     public String toString() {
-        return "User{" +
-                "surName='" + surName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                '}';
+        return userName;
     }
 }

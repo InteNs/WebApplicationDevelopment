@@ -1,10 +1,9 @@
 package login;
-
+import listener.SessionCounterListener;
 import model.User;
-
 import java.io.*;
 import java.util.ArrayList;
-
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -12,67 +11,73 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 public class LoginServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
-	protected void doPost( HttpServletRequest req, HttpServletResponse resp)
-			 throws ServletException, IOException {
-		boolean succes =false;
-        // request dispatcher zorgd dat de applicatie weer door kan na deze code
+    protected void doPost( HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        // Request dispatcher handles request.
         RequestDispatcher rd;
-		String email = req.getParameter("email");
+        // Initialize servlet context
+        ServletContext servletContext = req.getServletContext();
+        // Initialize user
         User user = null;
-        //String file = req.getServletContext().getRealPath("/")+"users.txt";
-		String password = req.getParameter("password");
-//        try {
-//            BufferedReader in = new BufferedReader(new FileReader(file));
-//            String str;
-//            while ((str = in.readLine()) != null) {
-//
-//                String[]ar = str.split("-");
-//                if (email.equals(ar[0])&&password.equals(ar[1])){
-//                    user = ar[3]+" "+ar[2];
-//                    succes=true;
-//                    break;
-//                }
-//            }
-//
-//            in.close();
-//        } catch (IOException e) {
-//            System.out.println("File Read Error");
-//        }
-        //check for alle users in "users" of email&pass overeenkomen
-        for(User saveduser : (ArrayList<User>)req.getServletContext().getAttribute("users")){
-            if (saveduser.getEmail().equals(email)&& saveduser.getPassword().equals(password)){
-                succes = true;
-                user = saveduser;
+        // Create default user and user Attribute
+        boolean exists = false;
+        for(User savedUser : (ArrayList<User>)req.getServletContext().getAttribute("usersList")){
+            if (savedUser.getUserName().equals("admin")) exists = true;
+        } if (!exists) {
+            user = new User(getServletConfig().getInitParameter("userName"), null, getServletConfig().getInitParameter("password"), "admin", null, null);
+            ArrayList<User> users = (ArrayList) servletContext.getAttribute("usersList");
+            users.add(user);
+            servletContext.setAttribute("usersList", users);
+        }
+        // User credentials
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        // Logged in users attribute
+        ArrayList loggedInUsers = (ArrayList) servletContext.getAttribute("loggedInUsers");
+        // Boolean login attempt
+        boolean success = false;
+        // Checks all users for match
+        for(User savedUser : (ArrayList<User>)req.getServletContext().getAttribute("usersList")){
+            if (savedUser.getUserName().equals(username)&& savedUser.getPassword().equals(password)){
+                success = true;
+                user = savedUser;
             }
-
         }
-        if (succes) {
-            //req.setAttribute("succes","<div class=\"alert alert-success\" role=\"alert\" style=\"margin-top:20px;\">Login succesvol.</div>");
-            System.out.println("succes");
-            //zet waar de app heen moet als deze servlet klaar is
-            rd = req.getRequestDispatcher("welcome.jsp");
-            System.out.println(user);
-            //zet de ingelogde user in de sessie
-            req.getSession().setAttribute("loggedInuser",user);
-            //maak een cookie met de email van de ingelogde user
-            Cookie c = new Cookie("cEmail", user.getEmail());
-            c.setMaxAge(2000);
-            //voeg cookie toe aan de response
-            resp.addCookie(c);
-            //String loggedusers = req.getServletContext().getRealPath("/")+"loggedusers.txt";
-            //PrintWriter pw = new PrintWriter(new FileWriter(loggedusers));
-            //pw.println(email);
-            //pw.flush();
-            //pw.close();
+        // Login attempt successful
+        if (success) {
+            // Log user login's
+            Logger.getLogger("listener.SessionCounterListener").info(
+                    "User "+user.getUserName()+" login!\nAmount of online users: "+SessionCounterListener.getTotalActiveSession()+".");
+            // Adds user to session
+            req.getSession().setAttribute("loggedInUser", user);
+            // Add logged in users
+            if(loggedInUsers == null)
+                loggedInUsers = new ArrayList();
+            loggedInUsers.add(user);
+            servletContext.setAttribute("loggedInUsers", loggedInUsers);
+            // Cookie username
+            if (req.getParameter("rememberUserName") != null) {
+                // Creates cookie with username
+                Cookie c = new Cookie("cookieUserName", user.getUserName());
+                // Sets cookie age
+                c.setMaxAge(2000);
+                // Adds cookie
+                resp.addCookie(c);
+            }
+            // Dispatched to welcome page
+            req.setAttribute("welcomeMessage", "U bent succesvol ingelogd en kan nu beginnen met bloggen.");
+            rd = req.getRequestDispatcher("/secure/welcome.jsp");
+          // Login attempt failed
         } else {
-            req.setAttribute("succes","<div class=\"alert alert-danger\" role=\"alert\" style=\"margin-top:20px;\">Verkeerd emailadres en/of wachtwoord.</div>");
-            System.out.println("failure");
-            rd = req.getRequestDispatcher("");
+            // Log login attempt fails
+            Logger.getLogger("listener.SessionCounterListerer").warning("Login failed for "+user.getUserName()+"!");
+            req.setAttribute("loginFailed", "Verkeerde combinatie van gebruikersnaam en wachtwoord.");
+            rd = req.getRequestDispatcher("index.jsp");
         }
-        //kill servlet en ga naar w/e de requestdispatcher wijst
+        // Kill servlet and follow request dispatcher
         rd.forward(req, resp);
-	}
+    }
 }

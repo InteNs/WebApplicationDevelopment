@@ -1,66 +1,91 @@
+<%--JavaScript--%>
+<script>
+	function hide(para) {
+		this.getElementById(para).style.display = none;
+	}
+</script>
+<%--JSP Imports--%>
+<%@ page import="listener.SessionCounterListener"%>
+<%--JSP Servlets--%>
+	<%--SessionCount--%>
+<%  String sessionCount = "<div id=\"mes1\" class=\"info message navItems navPadding messageWidth\">Aantal bezoekers website:"
+		+ SessionCounterListener.getTotalActiveSession()+"<div class=\"remove\" onclick=\"hide(mes1)\">x</div></div>";%>
+	<%--Cookies--%>
+<% 	Cookie[] cookies = request.getCookies();
+	String cookieUserName = "";
+		if (cookies != null)
+			for (Cookie c : cookies)
+				if(c.getName().equals("cookieUserName")) cookieUserName = c.getValue();%>
+	<%--Messages--%>
+<%  Object logoutMessage = request.getAttribute("logoutMessage");
+		String logout = "";
+			if (logoutMessage != null) { logout = "<div id=\"mes2\" class=\"info message navItems navPadding messageWidth\">"
+					+(String) logoutMessage+"<div class=\"remove\" onclick=\"hide(mes2)\">x</div></div>";} %>
+<%  Object registrationSuccess = request.getAttribute("registrationSuccess");
+		String registration = "";
+			if (registrationSuccess != null) { registration = "<div id=\"mes3\" class=\"info message navItems navPadding messageWidth\">"
+					+(String) registrationSuccess+"<div class=\"remove\" onclick=\"hide(mes3)\">x</div></div>";} %>
+<%  Object loginFailed = request.getAttribute("loginFailed");
+		String login = "";
+			if (loginFailed != null) { login = "<div id=\"mes4\" class=\"danger message navItems navPadding messageWidth\">"
+					+(String) loginFailed+"<div class=\"remove\" onclick=\"hide(mes4)\">x</div></div>";} %>
+<%--HTML--%>
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="base.css"/>
-    <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>A.T.D. Terminal</title>
-
-<!-- Bootstrap -->
-<link href="bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="registration.css" rel="stylesheet">
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-      <![endif]-->
+	<title>BlogSite</title>
+	<%--Import CSS--%>
+	<link rel="stylesheet" type="text/css" href="basic.css"/>
 </head>
-<body>
-	<div class="container" style="margin-top: 50px;">
-				<div class="jumotron"
-					style="background-color: rgba(238,238,238,0.8); width: 300px; padding: 15px; margin: 20vh auto auto;">
-					<!-- Inloggen -->
-					<h4 class="modal-title">Aanmelden:</h4>
-
-					<form action="LoginServlet.do" method="post">
-						<div class="form-group">
-							<label for="exampleInputEmail1">Email</label> <input type="text"
-								name="email" class="form-control" id="exampleInputEmail1"
-								placeholder="Vul email in">
-						</div>
-						<div class="form-group">
-							<label for="exampleInputPassword1">Wachtwoord</label> <input
-								type="password" name='password' class="form-control"
-								id="exampleInputPassword1" placeholder="Vul wachtwoord in">
-						</div>
-						<div>
-							<label> <input type="checkbox"> <span
-								style="font-weight: 200;">Blijf aangemeld</span>
-							</label>
-						</div>
-						<div class="btn-toolbar" role="toolbar" aria-label="label">
-							<button type="submit" class="btn">Aanmelden</button>
-                            <button type="button" onclick="location.href='Registration.jsp'" class="btn">Registreren</button>
-						</div>
-					</form>
-					<%
-				Object succes = request.getAttribute("succes");
-				if (succes != null) {
-					out.println(succes);
-				}			 
-			%>
-					<span>&nbsp;</span>
+<body class="inline">
+<div class="navBar">
+	<%--left side--%>
+	<div class="left" style="width:75%;">
+			<!-- Login form -->
+			<form class="form" id="loginForm" action="login" method="post">
+				<div class="left" style="width: 600px">
+				<!-- Username -->
+				<div class="navPadding">
+				<input class="navItems bbox" type="text" name="username" id="username" placeholder="Vul gebruikersnaam in" value="<%=cookieUserName%>"/>
+				<!-- Password -->
+				<input class="navItems bbox" type="password" name='password' id="password" placeholder="Vul wachtwoord in"/>
+				<%--Registratie link pt.1--%>
+				<span class="message"> Nog geen gebruikers account? </span>
 				</div>
+				<!-- Submit/Remember username -->
+				<div class="navPadding">
+				<input class="navItems bbox" type="submit" value="Aanmelden"/>
+				<input type="checkbox" name="rememberUserName" id="rememberUserName"/> Gebruikersnaam onthouden
+				<%--Registratie link pt.2--%>
+				<span style="padding-left:12px;">
+					<input class="navItems bbox" type="button" value="Registreer nu!" onclick="location.href='registration.jsp'"/>
+				</span>
+				</div>
+				</div>
+				</div>
+			</form>
+
+
+	</div>
+	<%--Right side--%>
+	<div class="right" id="messagesObject" style="width: 25%">
+		<%--SessionCounter--%>
+		<div class="right">
+			<!-- Messages -->
+			<div class="message navItems navPadding messageWidth"
+				 style="font-weight: 900;
+				 font-size: 15px;
+				 text-decoration: underline;">Meldingen:</div>
+			<%=sessionCount%>
+			<%=registration%>
+			<%=logout%>
+			<%=login%>
 		</div>
 	</div>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+</div>
+
+<!-- blogPosts -->
+<div class="containerCenter blogs">
+	<jsp:include page="blogPosts.jsp" />
+</div>
 </body>
 </html>
