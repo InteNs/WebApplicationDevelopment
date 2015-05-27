@@ -12,3 +12,131 @@
   <thread>16</thread>
   <message>Logger initialized</message>
 </record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T02:21:35</date>
+  <millis>1432686095919</millis>
+  <sequence>33</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>14</thread>
+  <message>Logger initialized</message>
+</record>
+<record>
+  <date>2015-05-27T02:22:46</date>
+  <millis>1432686166148</millis>
+  <sequence>37</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>38</thread>
+  <message>User a@a.nl login!
+Amount of online users: 4.</message>
+</record>
+<record>
+  <date>2015-05-27T02:22:58</date>
+  <millis>1432686178548</millis>
+  <sequence>38</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LogoutServlet</class>
+  <method>doPost</method>
+  <thread>43</thread>
+  <message>User a@a.nl logout!
+Amount of online users: 4.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T02:39:24</date>
+  <millis>1432687164065</millis>
+  <sequence>33</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>14</thread>
+  <message>Logger initialized</message>
+</record>
+<record>
+  <date>2015-05-27T02:39:30</date>
+  <millis>1432687170511</millis>
+  <sequence>34</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>38</thread>
+  <message>User admin login!
+Amount of online users: 4.</message>
+</record>
+<record>
+  <date>2015-05-27T02:39:32</date>
+  <millis>1432687172666</millis>
+  <sequence>35</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LogoutServlet</class>
+  <method>doPost</method>
+  <thread>39</thread>
+  <message>User admin logout!
+Amount of online users: 4.</message>
+</record>
+<record>
+  <date>2015-05-27T02:40:20</date>
+  <millis>1432687220670</millis>
+  <sequence>38</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>37</thread>
+  <message>User admin login!
+Amount of online users: 5.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T02:46:37</date>
+  <millis>1432687597598</millis>
+  <sequence>33</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>14</thread>
+  <message>Logger initialized</message>
+</record>
+<record>
+  <date>2015-05-27T02:46:44</date>
+  <millis>1432687604715</millis>
+  <sequence>34</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>31</thread>
+  <message>User admin login!
+Amount of online users: 3.</message>
+</record>
+<record>
+  <date>2015-05-27T02:47:04</date>
+  <millis>1432687624010</millis>
+  <sequence>37</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LogoutServlet</class>
+  <method>doPost</method>
+  <thread>40</thread>
+  <message>User admin logout!
+Amount of online users: 3.</message>
+</record>

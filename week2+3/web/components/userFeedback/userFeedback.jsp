@@ -14,7 +14,10 @@
             addressNull         =   (String) request.getAttribute("addressNull"),
             countryNull         =   (String) request.getAttribute("countryNull"),
             logoutMessage       =   (String) request.getAttribute("logoutMessage"),
-            loginMessage        =   (String) request.getAttribute("loginMessage");
+            loginMessage        =   (String) request.getAttribute("loginMessage"),
+            emailUsedMessage    =   (String) request.getAttribute("emailUsed"),
+            userNameUsedMessage =   (String) request.getAttribute("userNameUsed");
+
     String notificationType     = "notificationSuccess";
     String notificationMessage  = "Random test bericht om de notificatie te ontwikkelen";
     String sessionCount =
@@ -35,7 +38,9 @@
     if (addressNull == null) addressNull                    = "";
     if (countryNull == null) countryNull                    = "";
     if (logoutMessage == null) logoutMessage                = "";
-    if (loginMessage == null) loginMessage                = "";
+    if (loginMessage == null) loginMessage                  = "";
+    if (emailUsedMessage == null) emailUsedMessage          = "";
+    if (userNameUsedMessage == null) emailUsedMessage       = "";
 %>
 <%--HTML--%>
 <!DOCTYPE html>
@@ -63,6 +68,8 @@
     <%=countryNull%>
     <%=logoutMessage%>
     <%=loginMessage%>
+    <%=emailUsedMessage%>
+    <%=userNameUsedMessage%>
 </div>
 </body>
 </html>
