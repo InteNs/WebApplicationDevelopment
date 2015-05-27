@@ -57,14 +57,14 @@
 		<url-pattern>/createPost</url-pattern>
 	</servlet-mapping>
 
-	<!--&lt;!&ndash; Fitlers &ndash;&gt;-->
-	<!--<filter>-->
-		<!--<filter-name>FilterForSecurity</filter-name>-->
-		<!--<filter-class>security.SecurityFilter</filter-class>-->
-	<!--</filter>-->
-	<!--<filter-mapping>-->
-		<!--<filter-name>FilterForSecurity</filter-name>-->
-		<!--<url-pattern>/secure/*</url-pattern>-->
-	<!--</filter-mapping>-->
+	<!-- Filters -->
+	<filter>
+		<filter-name>FilterForSecurity</filter-name>
+		<filter-class>security.SecurityFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>FilterForSecurity</filter-name>
+		<url-pattern>/secure/*</url-pattern>
+	</filter-mapping>
 
 </web-app>

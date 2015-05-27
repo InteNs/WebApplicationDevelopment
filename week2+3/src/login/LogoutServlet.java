@@ -34,7 +34,7 @@ public class LogoutServlet extends HttpServlet {
             req.getSession().invalidate();
             req.setAttribute("logoutMessage", notificationLogoutSuccess);
         }
-        rd = req.getRequestDispatcher("index.jsp");
+        rd = req.getRequestDispatcher("/index.jsp");
         rd.forward(req, resp);
     }
 }

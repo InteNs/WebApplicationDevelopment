@@ -6,13 +6,15 @@ import java.time.LocalTime;
 
 public class BlogPost implements Serializable {
     private String  blogPost,userName,date,time;
-    private LocalDate ld = LocalDate.now();
-    private LocalTime lt = LocalTime.now();
+    private LocalDate ld;
+    private LocalTime lt;
 
     public BlogPost(String blogPost, User user) {
         this.blogPost   = blogPost;
         userName        = user.getUserName();
+        ld              = LocalDate.now();
         date            = ld.toString();
+        lt              = LocalTime.now();
         time            = lt.getHour()+":"+lt.getMinute()+":"+lt.getSecond();
     }
 
@@ -20,20 +22,27 @@ public class BlogPost implements Serializable {
         this.blogPost = blogPost;
     }
 
-    @Override
-    public String toString() {
-        return  "<div class=\"blogPostPanelBox\">" +
-                "<div class=\"blogPost\">" +
-                "<div><h4>Blogbericht:</h4></div>" +
-                blogPost +
-                "<div class=\"blogPostFooter\">" +
-                "Geschreven door: " +
-                userName + "." +
-                "<br/>" +
-                "Geposted op: " +
-                date + " om " + time + ".<br/>" +
-                "</div>" +
-                "</div>" +
-                "</div>";
+    public LocalTime getLt() {
+        return lt;
+    }
+
+    public LocalDate getLd() {
+        return ld;
+    }
+
+    public String getBlogPost() {
+        return blogPost;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getTime() {
+        return time;
     }
 }

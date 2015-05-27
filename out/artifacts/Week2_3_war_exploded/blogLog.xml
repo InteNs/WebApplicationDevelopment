@@ -188,16 +188,88 @@ Amount of online users: 1.</message>
   <thread>99</thread>
   <message>Logger initialized</message>
 </record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
 <record>
-  <date>2015-05-27T10:12:05</date>
-  <millis>1432714325604</millis>
-  <sequence>41</sequence>
+  <date>2015-05-27T10:27:13</date>
+  <millis>1432715233447</millis>
+  <sequence>62</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>116</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T10:30:31</date>
+  <millis>1432715431451</millis>
+  <sequence>34</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>36</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T10:36:41</date>
+  <millis>1432715801223</millis>
+  <sequence>34</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>16</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T11:01:25</date>
+  <millis>1432717285515</millis>
+  <sequence>34</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>16</thread>
+  <message>Logger initialized</message>
+</record>
+<record>
+  <date>2015-05-27T11:13:36</date>
+  <millis>1432718016502</millis>
+  <sequence>40</sequence>
   <logger>listener.SessionCounterListener</logger>
   <level>INFO</level>
   <class>login.LoginServlet</class>
   <method>doPost</method>
-  <thread>81</thread>
-  <message>User admin login!
+  <thread>39</thread>
+  <message>User a.a@a.nl login!
+Amount of online users: 3.</message>
+</record>
+<record>
+  <date>2015-05-27T11:13:50</date>
+  <millis>1432718030076</millis>
+  <sequence>41</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LogoutServlet</class>
+  <method>doPost</method>
+  <thread>44</thread>
+  <message>User a.a@a.nl logout!
 Amount of online users: 3.</message>
 </record>
 </log>
@@ -205,14 +277,362 @@ Amount of online users: 3.</message>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2015-05-27T10:12:59</date>
-  <millis>1432714379474</millis>
-  <sequence>33</sequence>
+  <date>2015-05-27T11:17:03</date>
+  <millis>1432718223918</millis>
+  <sequence>34</sequence>
   <logger>listener.SessionCounterListener</logger>
   <level>INFO</level>
   <class>listener.ServerContextListener</class>
   <method>contextInitialized</method>
-  <thread>14</thread>
+  <thread>16</thread>
+  <message>Logger initialized</message>
+</record>
+<record>
+  <date>2015-05-27T11:17:29</date>
+  <millis>1432718249214</millis>
+  <sequence>37</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>44</thread>
+  <message>User a.a@a.nl login!
+Amount of online users: 3.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T11:20:16</date>
+  <millis>1432718416412</millis>
+  <sequence>39</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>51</thread>
+  <message>Logger initialized</message>
+</record>
+<record>
+  <date>2015-05-27T11:20:34</date>
+  <millis>1432718434213</millis>
+  <sequence>40</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>42</thread>
+  <message>User a.a@a.nl login!
+Amount of online users: 1.</message>
+</record>
+<record>
+  <date>2015-05-27T11:20:36</date>
+  <millis>1432718436609</millis>
+  <sequence>41</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LogoutServlet</class>
+  <method>doPost</method>
+  <thread>41</thread>
+  <message>User a.a@a.nl logout!
+Amount of online users: 1.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T11:22:02</date>
+  <millis>1432718522141</millis>
+  <sequence>43</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>66</thread>
+  <message>Logger initialized</message>
+</record>
+<record>
+  <date>2015-05-27T11:22:23</date>
+  <millis>1432718543787</millis>
+  <sequence>44</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>62</thread>
+  <message>User a.a@a.nl login!
+Amount of online users: 0.</message>
+</record>
+<record>
+  <date>2015-05-27T11:22:26</date>
+  <millis>1432718546483</millis>
+  <sequence>45</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LogoutServlet</class>
+  <method>doPost</method>
+  <thread>63</thread>
+  <message>User a.a@a.nl logout!
+Amount of online users: 1.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T11:23:19</date>
+  <millis>1432718599630</millis>
+  <sequence>47</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>65</thread>
+  <message>Logger initialized</message>
+</record>
+<record>
+  <date>2015-05-27T11:23:32</date>
+  <millis>1432718612859</millis>
+  <sequence>48</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>59</thread>
+  <message>User a.a@a.nl login!
+Amount of online users: 0.</message>
+</record>
+<record>
+  <date>2015-05-27T11:23:35</date>
+  <millis>1432718615033</millis>
+  <sequence>49</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LogoutServlet</class>
+  <method>doPost</method>
+  <thread>64</thread>
+  <message>User a.a@a.nl logout!
+Amount of online users: 1.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T11:45:07</date>
+  <millis>1432719907198</millis>
+  <sequence>51</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>92</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T11:46:11</date>
+  <millis>1432719971279</millis>
+  <sequence>53</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>91</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T11:47:00</date>
+  <millis>1432720020630</millis>
+  <sequence>55</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>92</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T11:49:07</date>
+  <millis>1432720147538</millis>
+  <sequence>57</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>122</thread>
+  <message>Logger initialized</message>
+</record>
+<record>
+  <date>2015-05-27T11:49:43</date>
+  <millis>1432720183776</millis>
+  <sequence>58</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>115</thread>
+  <message>User a.a@a.nl login!
+Amount of online users: 1.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T11:51:32</date>
+  <millis>1432720292066</millis>
+  <sequence>60</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>137</thread>
+  <message>Logger initialized</message>
+</record>
+<record>
+  <date>2015-05-27T11:53:16</date>
+  <millis>1432720396510</millis>
+  <sequence>61</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>135</thread>
+  <message>User a.a@a.nl login!
+Amount of online users: 1.</message>
+</record>
+<record>
+  <date>2015-05-27T11:53:21</date>
+  <millis>1432720401301</millis>
+  <sequence>62</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LogoutServlet</class>
+  <method>doPost</method>
+  <thread>144</thread>
+  <message>User a.a@a.nl logout!
+Amount of online users: 1.</message>
+</record>
+<record>
+  <date>2015-05-27T11:53:24</date>
+  <millis>1432720404522</millis>
+  <sequence>63</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>119</thread>
+  <message>User a.a@a.nl login!
+Amount of online users: 1.</message>
+</record>
+<record>
+  <date>2015-05-27T11:53:26</date>
+  <millis>1432720406192</millis>
+  <sequence>64</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LogoutServlet</class>
+  <method>doPost</method>
+  <thread>145</thread>
+  <message>User a.a@a.nl logout!
+Amount of online users: 1.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T12:32:28</date>
+  <millis>1432722748550</millis>
+  <sequence>66</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>154</thread>
+  <message>Logger initialized</message>
+</record>
+<record>
+  <date>2015-05-27T12:32:57</date>
+  <millis>1432722777437</millis>
+  <sequence>68</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>149</thread>
+  <message>User admin login!
+Amount of online users: 1.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T12:34:01</date>
+  <millis>1432722841561</millis>
+  <sequence>70</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>171</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T12:43:26</date>
+  <millis>1432723406352</millis>
+  <sequence>73</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>189</thread>
+  <message>Logger initialized</message>
+</record>
+<record>
+  <date>2015-05-27T12:45:08</date>
+  <millis>1432723508660</millis>
+  <sequence>78</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>178</thread>
+  <message>User a.a@a.nl login!
+Amount of online users: 1.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T12:50:04</date>
+  <millis>1432723804095</millis>
+  <sequence>80</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>207</thread>
   <message>Logger initialized</message>
 </record>
 </log>
