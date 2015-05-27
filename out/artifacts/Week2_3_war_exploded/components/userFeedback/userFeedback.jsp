@@ -59,8 +59,10 @@
     <%=sessionCount%>
     <%--Errors Registration--%>
     <%=errorMessage%>
+    <%=userNameUsedMessage%>
     <%=userNameNull%>
     <%=realNameNull%>
+    <%=emailUsedMessage%>
     <%=emailNull%>
     <%=emailRepeatError%>
     <%=passwordNull%>
@@ -69,8 +71,8 @@
     <%=countryNull%>
     <%=logoutMessage%>
     <%=loginMessage%>
-    <%=emailUsedMessage%>
-    <%=userNameUsedMessage%>
+
+
 </div>
 </body>
 </html>
