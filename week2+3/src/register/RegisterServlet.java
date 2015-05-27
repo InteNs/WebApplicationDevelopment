@@ -79,7 +79,8 @@ public class RegisterServlet extends HttpServlet {
 			req.setAttribute("registrationSuccess", "Registratie geslaagd.");
 			rd = req.getRequestDispatcher("/index.jsp");
 			try {
-				sendMail(user.getEmail(),user.getRealName());
+				sendMail(user.getEmail(),user.getRealName(),"Registratie gelukt!",
+						"U kunt nu inloggen:http://localhost:8080/index.jsp");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -111,25 +112,23 @@ public class RegisterServlet extends HttpServlet {
 	}
 	private boolean doesExist(String attribute){
 		return users.stream()
-				.anyMatch(user -> attribute.equals(user.getUserName())||attribute.equals(user.getEmail()));
+				.anyMatch(user -> attribute.equals(user.getUserName()) || attribute.equals(user.getEmail()));
 
 	}
-	private void sendMail(String mailAddress, String realName) {
+	private void sendMail(String mailAddress, String realName,String title,String message) {
 		Properties props = new Properties();
-		props.put("mail.smtp.host", "mail.airdev.nl");
+		props.put("mail.smtp.host", "smtp.strato.com");
 		props.put("mail.smtp.port", 465);
 		props.put("mail.smtp.ssl.enable", true);
 		Session mailSession = Session.getInstance(props);
 		try {
 			MimeMessage msg = new MimeMessage(mailSession);
-			msg.setFrom(new InternetAddress("hu@airdev.nl", "BlogSite"));
+			msg.setFrom(new InternetAddress("autototaaldienst@dense-code.com", "webmaster"));
 			msg.setRecipients(Message.RecipientType.TO, mailAddress);
-			msg.setSubject("Registratie BlogSite succesfull!");
+			msg.setSubject(title);
+			msg.setText(message);
 			msg.setSentDate(Calendar.getInstance().getTime());
-			msg.setText("Dear mr/mrs. "
-					+ realName
-					+ "\n\nYour registration to BlogSite is succesfull!\n\nKind regards,\nthe BlogSite Team");
-			Transport.send(msg, "hu@airdev.nl", "hogeschool");
+			Transport.send(msg, "autototaaldienst@dense-code.nl", "password1");
 		} catch (Exception e) {
 			Logger.getLogger("AccountSysteem").warning(
 

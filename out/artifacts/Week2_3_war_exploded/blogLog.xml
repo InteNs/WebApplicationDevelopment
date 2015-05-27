@@ -636,3 +636,33 @@ Amount of online users: 1.</message>
   <message>Logger initialized</message>
 </record>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T16:27:56</date>
+  <millis>1432736876497</millis>
+  <sequence>34</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>16</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T16:34:05</date>
+  <millis>1432737245014</millis>
+  <sequence>38</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>52</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
