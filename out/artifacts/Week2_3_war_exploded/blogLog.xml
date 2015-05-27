@@ -140,3 +140,48 @@ Amount of online users: 3.</message>
   <message>User admin logout!
 Amount of online users: 3.</message>
 </record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T10:02:06</date>
+  <millis>1432713726288</millis>
+  <sequence>38</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>47</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T10:06:24</date>
+  <millis>1432713984892</millis>
+  <sequence>39</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>65</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-27T10:07:42</date>
+  <millis>1432714062201</millis>
+  <sequence>40</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>64</thread>
+  <message>Logger initialized</message>
+</record>
