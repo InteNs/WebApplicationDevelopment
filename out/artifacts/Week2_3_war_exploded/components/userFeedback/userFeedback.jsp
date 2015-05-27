@@ -40,7 +40,7 @@
     if (logoutMessage == null) logoutMessage                = "";
     if (loginMessage == null) loginMessage                  = "";
     if (emailUsedMessage == null) emailUsedMessage          = "";
-    if (userNameUsedMessage == null) emailUsedMessage       = "";
+    if (userNameUsedMessage == null) userNameUsedMessage    = "";
 %>
 <%--HTML--%>
 <!DOCTYPE html>
@@ -58,6 +58,7 @@
     <%--containerVisitorCount--%>
     <%=sessionCount%>
     <%--Errors Registration--%>
+    <%=errorMessage%>
     <%=userNameNull%>
     <%=realNameNull%>
     <%=emailNull%>
