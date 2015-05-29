@@ -78,7 +78,7 @@ public class LoginServlet extends HttpServlet {
             // Log login attempt fails
             Logger.getLogger("listener.SessionCounterListerer").warning("Login failed for "+username+"!");
             req.setAttribute("loginMessage", notificationLoginFailed);
-            rd = req.getRequestDispatcher("index.jsp");
+            rd = req.getRequestDispatcher("/index.jsp");
         }
         // Kill servlet and follow request dispatcher
         rd.forward(req, resp);

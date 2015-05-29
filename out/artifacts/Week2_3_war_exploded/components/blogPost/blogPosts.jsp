@@ -17,9 +17,22 @@
 <%
     if (request.getServletContext().getAttribute("usersList") != null)
         for (User user : (ArrayList<User>) request.getServletContext().getAttribute("usersList"))
-            for (BlogPost blogPost : user.getBlogPosts())
-                out.print(blogPost);
+            for (BlogPost blogPost : user.getBlogPosts()){
+                System.out.println(blogPost.getBlogPost());
 %>
+    <div class="blogPostPanelBox">
+    <div class="blogPost">
+        <div><h4>Blogbericht:</h4></div>
+            <%=blogPost.getBlogPost()%>
+        <div class="blogPostFooter">
+        Geschreven door: <%blogPost.getUserName();%>
+            <br/>
+        Gepost op: <%=blogPost.getDate()%> om <%=blogPost.getTime()%>.
+            <br/>
+        </div>
+    </div>
+    </div>
+<%}%>
 </div>
 </body>
 </html>

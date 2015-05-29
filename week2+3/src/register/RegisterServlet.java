@@ -1,8 +1,11 @@
 package register;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Objects;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 
 import javax.mail.*;
@@ -25,15 +28,25 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		RequestDispatcher rd;
-		ServletContext servletContext = req.getServletContext();
+		ServletContext servletContext;
 		// Error messages
-		final String nullError 			= "Verplicht veld.";
-		final String inUseError			= "Wordt al gebruikt";
-		final String repeatError 		= "velden komen niet overeen.";
-		// User attributes
-		User   user;
+		String notificationInit = "<div class=\"notificationBox\"><div class=\"notificationMessage notificationError";
+		String notificationNullErrorUsername = notificationInit+"\">Gebruiker is een verplicht veld.</div></div>";
+		String notificationNullErrorEmail = notificationInit+"\">Email is een verplicht veld.</div></div>";
+		String notificationNullErrorPassword = notificationInit+"\">Wachtwoord is een verplicht veld.</div></div>";
+		String notificationNullErrorRealname = notificationInit+"\">Naam is een verplicht veld.</div></div>";
+		String notificationNullErrorAddress = notificationInit+"\">Adres is een verplicht veld.</div></div>";
+		String notificationNullErrorCountry = notificationInit+"\">Land is een verplicht veld.</div></div>";
+		String notificationRepeatErrorEmail = notificationInit+"\">De velden van email komen niet overeen</div></div>";
+		String notificationRepeatErrorPassword = notificationInit+"\">De velden van wachtwoord komen niet overeen</div></div>";
+		String notificationEmailInUseError = notificationInit+"\">Email bestaad al.</div></div>";
+		String notificationUserNameInUseError = notificationInit+"\">Gebruikersnaam bestaad al.</div></div>";
 
-		users = (ArrayList<User>) servletContext.getAttribute("usersList");
+		// User attributes
+		User user;
+		synchronized (servletContext = getServletContext()) {
+			users = (ArrayList<User>) servletContext.getAttribute("usersList");
+		}
 		System.out.println(users);
 		if(users == null)
 			users = new ArrayList<>();
@@ -57,122 +70,69 @@ public class RegisterServlet extends HttpServlet {
 			// create user
 			user = new User(userName, email, password, realName, address, country);
 			// add user to arraylist in servletContext
-
+			ArrayList users = (ArrayList) servletContext.getAttribute("usersList");
+			if(users == null)
+				users = new ArrayList();
 			users.add(user);
 			servletContext.setAttribute("usersList", users);
 			// dispatch to login with message
 			req.setAttribute("registrationSuccess", "Registratie geslaagd.");
-			rd = req.getRequestDispatcher("index.jsp");
+			rd = req.getRequestDispatcher("/index.jsp");
 			try {
-				sendEmail();
+				sendMail(user.getEmail(),user.getRealName(),"Registratie gelukt!",
+						"U kunt nu inloggen:http://localhost:8080/index.jsp");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			rd.forward(req, resp);
 		} else {
-			// already in use errors
-			for(User userI : users) {
-				if (doesExist(email))req.setAttribute("emailUsed", inUseError);
-				if (doesExist(userName))req.setAttribute("userNameUsed",inUseError);
-			}
 
 			// Null errors
-			if (Objects.equals(userName, "")) 	req.setAttribute("userNameNull", 	nullError);
-			if (Objects.equals(email, "")) 		req.setAttribute("emailNull", 		nullError);
-			if (Objects.equals(password, "")) 	req.setAttribute("passwordNull", 	nullError);
-			if (Objects.equals(realName, "")) 	req.setAttribute("realNameNull", 	nullError);
-			if (Objects.equals(address, "")) 	req.setAttribute("addressNull", 	nullError);
-			if (Objects.equals(country, "")) 	req.setAttribute("countryNull", 	nullError);
+			if (Objects.equals(userName, "")) 	req.setAttribute("userNameNull", 	notificationNullErrorUsername);
+			if (Objects.equals(email, "")) 		req.setAttribute("emailNull", 		notificationNullErrorEmail);
+			if (Objects.equals(password, "")) 	req.setAttribute("passwordNull", 	notificationNullErrorPassword);
+			if (Objects.equals(realName, "")) 	req.setAttribute("realNameNull", 	notificationNullErrorRealname);
+			if (Objects.equals(address, "")) 	req.setAttribute("addressNull", 	notificationNullErrorAddress);
+			if (Objects.equals(country, "")) 	req.setAttribute("countryNull", 	notificationNullErrorCountry);
 			// Repeat errors
-			if (!email.equals(req.getParameter("emailRepeat")))
-				req.setAttribute("emailRepeatError", 	"Email"+repeatError);
+			if (!password.equals(req.getParameter("emailRepeat")))
+				req.setAttribute("emailRepeatError", 	"Email"+notificationRepeatErrorEmail);
 			if (!password.equals(req.getParameter("passwordRepeat")))
-				req.setAttribute("passwordRepeatError", "Wachtwoord"+repeatError);
+				req.setAttribute("passwordRepeatError", "Wachtwoord"+notificationRepeatErrorPassword);
+			//already exists errors
+			if (doesExist(email))req.setAttribute("emailUsed", notificationEmailInUseError);
+			if (doesExist(userName))req.setAttribute("userNameUsed",notificationUserNameInUseError);
 			// Main error message
 				req.setAttribute("errorMessage", "Registratie mislukt.");
 			// disppatch to registration form with error messages
-			rd = req.getRequestDispatcher("registration.jsp");
+			rd = req.getRequestDispatcher("/registration.jsp");
 
 			rd.forward(req, resp);
 		}
 	}
 	private boolean doesExist(String attribute){
 		return users.stream()
-				.anyMatch(user -> attribute.equals(user.getUserName())||attribute.equals(user.getEmail()));
-	}
-	private void sendEmail() throws Exception {
-		String email = "mark.havekes@gmail.com";
-		String oauthToken = "-----BEGIN PRIVATE KEY-----\nMIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJgFp46pFR0pgJeI\nzVDDUMrVTST4yXAIyPB/HgKQY72dzRexboxTxc9ZminxEvty+cOTH3V4T1KlzUeZ\n2+9B1LOvoXIhHtIz3nRMqF6Ed4T+SyNb2dx6KE45Y/ShzLgOql6L6pwnHVwI0LjL\nXCP0QPTqVxmxG+11xX6v1qrR69rBAgMBAAECgYAMMlfxICurfUrt3XHriuAOhfJ8\nhuFSdcH5WZmExyTZb7GmtvuRkp8KNbwipU7KkbzsLf+WIyLqFJdVqUh196gi6spu\nzEYclj7R0Z/Hd6Rmsi3ROcEFnT9477EQqF+FYeolvQWqVPMobkrsuW13xlejscRJ\nfURhtN6olMxHxodLSQJBAMbCxZtPG63oNmJmrQTgQEalymAUC/FJPEEm6ivep60K\nUbWvIxAvTL7xci++hOz3Yee0GVFZI2lfSnBJJ7ctEnMCQQDDzSqW57kJpHGAn7Ry\npXgBh2KMEjAL+7CJnrD//+VFga+XdEY6yfat6HoaMcSf5zkpZJ66bHebnudAMUUJ\ndSz7AkAlvLc+DKAJvcwNlMcG5PjvMO0insvBrRD2ocfWOnkFfq8S2sTCfuiIXFk8\nvWSJhVKeZnBkJJN3nzMH7KvQuIsHAkEAiC1NDZ8j5jzkY9yvF31VtVp/g4OyvuLR\nqSUhXSqQPoMvqFpJ7eFBGzqwkT9DzSJ3cv50FpwRo74kf1TE+wrvuQJADZCt8TCc\n72HMNpOWfhpGuXM23rrAnNcG+REc0jBWdHNuXAELNRu1amAgL78jJR4ZNUKu8GN7\nZXF0+Dqbd/S9sw\u003d\u003d\n-----END PRIVATE KEY-----\n";
-		OAuth2Authenticator.initialize();
-
-		IMAPStore imapStore = OAuth2Authenticator.connectToImap("imap.gmail.com",
-				993,
-				email,
-				oauthToken,
-				true);
-		System.out.println("Successfully authenticated to IMAP.\n");
-		SMTPTransport smtpTransport = OAuth2Authenticator.connectToSmtp("smtp.gmail.com",
-				587,
-				email,
-				oauthToken,
-				true);
-		System.out.println("Successfully authenticated to SMTP.");
+				.anyMatch(user -> attribute.equals(user.getUserName()) || attribute.equals(user.getEmail()));
 
 	}
-//	private void sendEmail() {
-//		// Recipient's email ID needs to be mentioned.
-//		String to = "mark.havekes@student.hu.nl";
-//
-//		// Sender's email ID needs to be mentioned
-//		String from = "mark.havekes@yahoo.com";
-//
-//		// Assuming you are sending email from localhost
-//		String host = "smtp.att.yahoo.com";
-//
-//		// Get system properties
-//		Properties properties = System.getProperties();
-//
-//		// Setup mail server
-//		properties.setProperty("mail.smtp.host", host);
-//		properties.setProperty("mail.smtp.port","587");
-//
-//		//setup auth
-//		//properties.setProperty("mail.smtp.auth", "true");
-//		Authenticator auth = new SMTPAuthenticator();
-//		// Get the default Session object.
-//		Session session = Session.getDefaultInstance(properties);
-//
-//		try {
-//			// Create a default MimeMessage object.
-//			MimeMessage message = new MimeMessage(session);
-//
-//			// Set From: header field of the header.
-//			message.setFrom(new InternetAddress(from));
-//
-//			// Set To: header field of the header.
-//			message.addRecipient(Message.RecipientType.TO,
-//					new InternetAddress(to));
-//
-//			// Set Subject: header field
-//			message.setSubject("yoooooooo");
-//
-//			// Now set the actual message
-//			message.setText("verstuurd door middel van web-dev app :DDDD");
-//
-//			// Send message
-//
-//			Transport.send(message,"mark.havekes@yahoo.com","jIvWNo02pBndyjdZjL6D");
-//			System.out.println("Sent message successfully....");
-//		} catch (Exception mex) {
-//			mex.printStackTrace();
-//		}
-//
-//	}
-	private class SMTPAuthenticator extends javax.mail.Authenticator {
-		public PasswordAuthentication getPasswordAuthentication() {
-			String username = "mark.havekes@yahoo.com";
-			String password = "jIvWNo02pBndyjdZjL6D";
-			return new PasswordAuthentication(username, password);
+	private void sendMail(String mailAddress, String realName,String title,String message) {
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.strato.com");
+		props.put("mail.smtp.port", 465);
+		props.put("mail.smtp.ssl.enable", true);
+		Session mailSession = Session.getInstance(props);
+		try {
+			MimeMessage msg = new MimeMessage(mailSession);
+			msg.setFrom(new InternetAddress("autototaaldienst@dense-code.com", "webmaster"));
+			msg.setRecipients(Message.RecipientType.TO, mailAddress);
+			msg.setSubject(title);
+			msg.setText(message);
+			msg.setSentDate(Calendar.getInstance().getTime());
+			Transport.send(msg, "autototaaldienst@dense-code.nl", "password1");
+		} catch (Exception e) {
+			Logger.getLogger("AccountSysteem").warning(
+
+					"send failed: " + e.getMessage());
 		}
 	}
 }
