@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class ServerContextListener implements ServletContextListener {
     private String file, errorLogFile;
     private ServletContext servletContext;
-    private Logger logger = Logger.getLogger("listener.SessionCounterListener");
+    private final Logger logger = Logger.getLogger("listener.SessionCounterListener");
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
@@ -32,11 +32,9 @@ public class ServerContextListener implements ServletContextListener {
         // Read object file
         try {
             ObjectInputStream reader = new ObjectInputStream(new FileInputStream(file));
-            servletContext.setAttribute("usersList", (ArrayList<User>)reader.readObject());
+            servletContext.setAttribute("usersList", reader.readObject());
             reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 

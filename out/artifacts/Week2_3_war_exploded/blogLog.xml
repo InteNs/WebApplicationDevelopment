@@ -666,3 +666,146 @@ Amount of online users: 1.</message>
   <message>Logger initialized</message>
 </record>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-29T15:57:58</date>
+  <millis>1432907878627</millis>
+  <sequence>34</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>20</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-29T16:17:38</date>
+  <millis>1432909058792</millis>
+  <sequence>38</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>53</thread>
+  <message>Logger initialized</message>
+</record>
+<record>
+  <date>2015-05-29T16:17:59</date>
+  <millis>1432909079569</millis>
+  <sequence>39</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>41</thread>
+  <message>User admin login!
+Amount of online users: 0.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-29T16:18:25</date>
+  <millis>1432909105505</millis>
+  <sequence>41</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>52</thread>
+  <message>Logger initialized</message>
+</record>
+<record>
+  <date>2015-05-29T16:18:29</date>
+  <millis>1432909109077</millis>
+  <sequence>42</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>39</thread>
+  <message>User admin login!
+Amount of online users: 0.</message>
+</record>
+<record>
+  <date>2015-05-29T16:18:33</date>
+  <millis>1432909113473</millis>
+  <sequence>43</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LogoutServlet</class>
+  <method>doPost</method>
+  <thread>44</thread>
+  <message>User admin logout!
+Amount of online users: 1.</message>
+</record>
+<record>
+  <date>2015-05-29T16:18:36</date>
+  <millis>1432909116887</millis>
+  <sequence>44</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>46</thread>
+  <message>User admin login!
+Amount of online users: 1.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-05-29T16:19:22</date>
+  <millis>1432909162341</millis>
+  <sequence>46</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>53</thread>
+  <message>Logger initialized</message>
+</record>
+<record>
+  <date>2015-05-29T16:19:28</date>
+  <millis>1432909168943</millis>
+  <sequence>47</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>67</thread>
+  <message>User admin login!
+Amount of online users: 0.</message>
+</record>
+<record>
+  <date>2015-05-29T16:19:37</date>
+  <millis>1432909177708</millis>
+  <sequence>48</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LogoutServlet</class>
+  <method>doPost</method>
+  <thread>38</thread>
+  <message>User admin logout!
+Amount of online users: 1.</message>
+</record>
+<record>
+  <date>2015-05-29T16:19:42</date>
+  <millis>1432909182423</millis>
+  <sequence>49</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>login.LoginServlet</class>
+  <method>doPost</method>
+  <thread>42</thread>
+  <message>User admin login!
+Amount of online users: 1.</message>
+</record>

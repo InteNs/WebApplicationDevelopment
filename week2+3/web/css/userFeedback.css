@@ -6,8 +6,8 @@
     height: 100%;
     /*element in bottem-right corner*/
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
     /*extra*/
     padding: 1%;
     border-left: solid 1px #d3d3d3;

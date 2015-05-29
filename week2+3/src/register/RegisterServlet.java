@@ -1,6 +1,5 @@
 package register;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Objects;
@@ -18,13 +17,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.mail.imap.IMAPStore;
-import com.sun.mail.smtp.SMTPTransport;
-import mail.OAuth2Authenticator;
 import model.User;
 
 public class RegisterServlet extends HttpServlet {
-	ArrayList<User> users = null;
+	private ArrayList<User> users = null;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		RequestDispatcher rd;
@@ -79,7 +75,7 @@ public class RegisterServlet extends HttpServlet {
 			req.setAttribute("registrationSuccess", "Registratie geslaagd.");
 			rd = req.getRequestDispatcher("/index.jsp");
 			try {
-				sendMail(user.getEmail(),user.getRealName(),"Registratie gelukt!",
+				sendMail(user.getEmail(), "Registratie gelukt!",
 						"U kunt nu inloggen:http://localhost:8080/index.jsp");
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -115,7 +111,7 @@ public class RegisterServlet extends HttpServlet {
 				.anyMatch(user -> attribute.equals(user.getUserName()) || attribute.equals(user.getEmail()));
 
 	}
-	private void sendMail(String mailAddress, String realName,String title,String message) {
+	private void sendMail(String mailAddress, String title, String message) {
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.strato.com");
 		props.put("mail.smtp.port", 465);
@@ -128,7 +124,9 @@ public class RegisterServlet extends HttpServlet {
 			msg.setSubject(title);
 			msg.setText(message);
 			msg.setSentDate(Calendar.getInstance().getTime());
-			Transport.send(msg, "autototaaldienst@dense-code.nl", "password1");
+
+			//Transport.send(msg, "autototaaldienst@dense-code.nl", "password1");
+
 		} catch (Exception e) {
 			Logger.getLogger("AccountSysteem").warning(
 

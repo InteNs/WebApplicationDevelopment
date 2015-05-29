@@ -10,4 +10,3 @@
 <jsp:include page="components/blogPost/blogPosts.jsp" />
 <jsp:include page="components/userFeedback/userFeedback.jsp" />
 </body>
-</html>

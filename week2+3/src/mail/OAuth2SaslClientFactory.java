@@ -43,12 +43,12 @@ public class OAuth2SaslClientFactory implements SaslClientFactory {
                                      Map<String, ?> props,
                                      CallbackHandler callbackHandler) {
     boolean matchedMechanism = false;
-    for (int i = 0; i < mechanisms.length; ++i) {
-      if ("XOAUTH2".equalsIgnoreCase(mechanisms[i])) {
-        matchedMechanism = true;
-        break;
+      for (String mechanism : mechanisms) {
+          if ("XOAUTH2".equalsIgnoreCase(mechanism)) {
+              matchedMechanism = true;
+              break;
+          }
       }
-    }
     if (!matchedMechanism) {
       logger.info("Failed to match any mechanisms");
       return null;

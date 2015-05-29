@@ -5,9 +5,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class BlogPost implements Serializable {
-    private String  blogPost,userName,date,time;
-    private LocalDate ld;
-    private LocalTime lt;
+    private String  blogPost;
+    private final String userName;
+    private final String date;
+    private final String time;
+    private final LocalDate ld;
+    private final LocalTime lt;
 
     public BlogPost(String blogPost, User user) {
         this.blogPost   = blogPost;
