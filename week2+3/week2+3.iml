@@ -41,5 +41,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="mysql-connector-java-5.1.35-bin" level="project" />
+    <orderEntry type="library" name="taglibs-standard-compat-1.2.5" level="project" />
   </component>
 </module>

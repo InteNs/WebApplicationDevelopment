@@ -24,7 +24,7 @@
       <input class="loginItem" type="password" name='password' id="password" placeholder="Vul wachtwoord in"/>
     </div>
     <div class="loginPanelBox">
-      <span class="loginItem"><input type="checkbox" name="rememberUserName" id="rememberUserName"/> Gebruikersnaam onthouden</span>
+      <span class="loginItem"><input type="checkbox" name="rememberUserName" id="rememberUserName" title="Gebruikersnaam onthouden"/></span>
     </div>
     <div class="loginPanelBox">
       <input class="loginItem" type="submit" value="Aanmelden"/>
@@ -39,4 +39,3 @@
   </form>
 </div>
 </body>
-</html>

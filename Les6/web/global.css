@@ -1,0 +1,6 @@
+table, th, td, tr {
+    padding: 5px;
+}
+th {
+    text-align: left;
+}
