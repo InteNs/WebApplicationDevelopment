@@ -1,7 +1,7 @@
 package blog;
 
-import model.BlogPost;
-import model.User;
+import domain.BlogPost;
+import domain.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

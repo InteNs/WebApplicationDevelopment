@@ -1,7 +1,6 @@
 package blog;
 
-import model.BlogPost;
-import model.User;
+import domain.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class BlogPostServlet extends HttpServlet{
+    private static final long serialVersionUID = 1l;
 
     protected void doPost( HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -21,7 +21,7 @@ public class BlogPostServlet extends HttpServlet{
         User user = (User) req.getSession().getAttribute("loggedInUser");
         String blogText = req.getParameter("blogPost");
 
-        user.getBlogPosts().add(new BlogPost(blogText, user, ));
+        //user.getBlogPosts().add(new BlogPost(blogText, user, ));
 
         rd = req.getRequestDispatcher("/secure/welcome.jsp");
 

@@ -1,11 +1,10 @@
-package model;
+package domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class BlogPost implements Serializable {
-    private int ID;
     private String  blogPost;
     private final String userName;
     private final String date;
@@ -13,8 +12,7 @@ public class BlogPost implements Serializable {
     private final LocalDate ld;
     private final LocalTime lt;
 
-    public BlogPost(String blogPost, User user, int ID) {
-        this.ID         = ID;
+    public BlogPost(String blogPost, User user) {
         this.blogPost   = blogPost;
         userName        = user.getUserName();
         ld              = LocalDate.now();

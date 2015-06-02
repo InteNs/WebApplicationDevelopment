@@ -1,6 +1,6 @@
 package login;
 import listener.SessionCounterListener;
-import model.User;
+import domain.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;

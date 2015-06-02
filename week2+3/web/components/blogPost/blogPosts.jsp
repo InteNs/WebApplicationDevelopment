@@ -1,6 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="model.BlogPost" %>
-<%@ page import="model.User" %>
+<%@ page import="domain.BlogPost" %>
+<%@ page import="domain.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--HTML--%>
 <!DOCTYPE html>
@@ -17,17 +17,17 @@
 <%
     if (request.getServletContext().getAttribute("usersList") != null)
         for (User user : (ArrayList<User>) request.getServletContext().getAttribute("usersList"))
-            for (BlogPost blogPost : user.getBlogPosts()){
-                System.out.println(blogPost.getBlogPost());
+            for (BlogPost message : user.getBlogPosts()){
+                System.out.println(message.getBlogPost());
 %>
     <div class="blogPostPanelBox">
-    <div class="blogPost">
+    <div class="message">
         <div><h4>Blogbericht:</h4></div>
-            <%=blogPost.getBlogPost()%>
+            <%=message.getBlogPost()%>
         <div class="blogPostFooter">
-        Geschreven door: <%blogPost.getUserName();%>
+        Geschreven door: <%message.getUserName();%>
             <br/>
-        Gepost op: <%=blogPost.getDate()%> om <%=blogPost.getTime()%>.
+        Gepost op: <%=message.getDate()%> om <%=message.getTime()%>.
             <br/>
         </div>
     </div>

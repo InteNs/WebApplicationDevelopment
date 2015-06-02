@@ -14,6 +14,18 @@
 
 	<!--Servlets & Mappings -->
 	<servlet>
+		<servlet-name>ShowBlogPosts</servlet-name>
+		<servlet-class>blog.GetBlogPostsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowBlogPosts</servlet-name>
+		<url-pattern>/index.jsp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ShowBlogPosts</servlet-name>
+		<url-pattern>/welcome.jsp</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>login.LoginServlet</servlet-class>
 		<init-param>

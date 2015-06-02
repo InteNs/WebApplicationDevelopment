@@ -1,6 +1,6 @@
 package login;
 import listener.SessionCounterListener;
-import model.User;
+import domain.User;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.logging.Logger;

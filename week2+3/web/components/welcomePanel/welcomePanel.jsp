@@ -1,5 +1,5 @@
 <%--JSP imports--%>
-<%@ page import="model.User" %>
+<%@ page import="domain.User" %>
 <%@ page import="listener.SessionCounterListener" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%--JSP Servlets--%>

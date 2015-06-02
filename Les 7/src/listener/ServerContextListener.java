@@ -1,13 +1,9 @@
 package listener;
 
-import com.sun.xml.internal.ws.api.policy.PolicyResolver;
-import model.User;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
