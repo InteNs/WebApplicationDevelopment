@@ -1,4 +1,4 @@
-package login;
+package servlet;
 import listener.SessionCounterListener;
 import domain.User;
 

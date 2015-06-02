@@ -1,4 +1,4 @@
-package blog;
+package servlet;
 
 import domain.User;
 

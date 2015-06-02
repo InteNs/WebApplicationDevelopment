@@ -1,4 +1,4 @@
-package register;
+package servlet;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Calendar;

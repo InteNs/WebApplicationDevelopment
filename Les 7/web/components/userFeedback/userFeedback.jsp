@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--userFeedback should be imported in the root of the html--%>
 <%--JSP imports--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -46,7 +47,7 @@
 <!DOCTYPE html>
 <head>
     <%--CSS imports--%>
-    <link rel="stylesheet" href="../../css/userFeedback.css"/>
+    <link rel="stylesheet" href="<c:url value="/css/userFeedback.css"/>"/>
 </head>
 <body class="inline">
 <%--Main container--%>

@@ -27,4 +27,8 @@ public class BlogPostDAO extends BaseDAO {
     public List<BlogPost> getAllBlogPosts() {
         return selectBlogPosts("SELECT * FROM blogsite_db.blogpost");
     }
+
+    public void addBlogPost() {
+
+    }
 }

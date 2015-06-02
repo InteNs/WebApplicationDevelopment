@@ -15,7 +15,7 @@
 	<!--Servlets & Mappings -->
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
-		<servlet-class>login.LoginServlet</servlet-class>
+		<servlet-class>servlet.LoginServlet</servlet-class>
 		<init-param>
 			<param-name>userName</param-name>
 			<param-value>admin</param-value>
@@ -32,7 +32,7 @@
 
 	<servlet>
 		<servlet-name>LogoutServlet</servlet-name>
-		<servlet-class>login.LogoutServlet</servlet-class>
+		<servlet-class>servlet.LogoutServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LogoutServlet</servlet-name>
@@ -41,7 +41,7 @@
 
 	<servlet>
 		<servlet-name>RegisterServlet</servlet-name>
-		<servlet-class>register.RegisterServlet</servlet-class>
+		<servlet-class>servlet.RegisterServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>RegisterServlet</servlet-name>
@@ -50,7 +50,7 @@
 
 	<servlet>
 		<servlet-name>BlogPostServlet</servlet-name>
-		<servlet-class>blog.BlogPostServlet</servlet-class>
+		<servlet-class>servlet.BlogPostServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>BlogPostServlet</servlet-name>
