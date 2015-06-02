@@ -2,36 +2,77 @@ package domain.service;
 
 import domain.User;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class ValidateService extends ServiceProvider {
 
+
+    private static final String nullErr         = "Dit veld mag niet leeg zijn",
+                                userExists 	    = "Gebruiker bestaat al",
+                                emailExists     = "Email adres bestaat al",
+                                emailEqual	    = "Email velden komen niet overeen",
+                                passwordEqual   = "Wachtwoord velden komen niet overeen";
+    private HashMap<String,String> errorMessages = new HashMap<>();
     public boolean validateAllFields(String username, String email, String emailrepeat, String password, String passwordrepeat, String realname, String address, String country){
-        boolean b = false;
-        if(!isNull(username)&&!isNull(email)&&!isNull(emailrepeat)&&!isNull(password)&&!isNull(passwordrepeat)&&isNull(realname)&&!isNull(address)&&!isNull(country)) b = true;
-        if(!isNotEqual(email,emailrepeat)&&!isNotEqual(password, passwordrepeat)) b = true;
-        if(!isNotUnique(username, username)&&!isNotUnique(email, email)) b = true;
-        return b;
-    }
-    public boolean isNull(String field) {
-        if (field == null) return true;
-        else return false;
-    }
-
-    public boolean isNotEqual(String field, String compare) {
-        if (!field.equals(compare)) return true;
-        else return false;
-    }
-
-    public boolean isNotUnique (String field, String type) {
-        List<User> users = ServiceProvider.getUserService().getAllUsers();
-        switch (type) {
-            case "username":for(User user : users)if(user.getUserName().equals(field)) return true;
-                break;
-            case "email":for(User user : users)if(user.getEmail().equals(field)) return true;
-                break;
-            default: break;
+        boolean succes = true;
+        errorMessages.clear();
+        if(doesExist(username))  {
+            succes = false;
+            errorMessages.put("usernameerror",userExists);
         }
-        return false;
+        if(doesExist(email)){
+            succes = false;
+            errorMessages.put("emailerror",emailExists);
+        }
+        if (isNull(username)) {
+            succes = false;
+            errorMessages.put("usernameerror", nullErr);
+        }
+        if (isNull(email)) {
+            succes = false;
+            errorMessages.put("emailerror",nullErr);
+        }
+        if (isNull(password)) {
+            succes = false;
+            errorMessages.put("passworderror",nullErr);
+        }
+        if (isNull(realname)) {
+            succes = false;
+            errorMessages.put("realnameerror",nullErr);
+        }
+        if (isNull(address)) {
+            succes = false;
+            errorMessages.put("addresserror",nullErr);
+        }
+        if (isNull(country)) {
+            succes = false;
+            errorMessages.put("countryerror",nullErr);
+        }
+        if (Objects.equals(email, emailrepeat)) {
+            succes = false;
+            errorMessages.put("emailrepeaterror",emailEqual);
+        }
+        if(Objects.equals(password, passwordrepeat)){
+            succes = false;
+            errorMessages.put("passwordrepeaterror",passwordEqual);
+        }
+        return succes;
+
+    }
+
+    public HashMap getErrorFields(){
+        return errorMessages;
+    }
+
+    public boolean isNull(String field) {
+        if (field == null || field.equals("")) return true;
+        else return false;
+    }
+    private boolean doesExist(String attribute){
+        return ServiceProvider.getUserService().getAllUsers().stream()
+                .anyMatch(user -> attribute.equals(user.getUserName()) || attribute.equals(user.getEmail()));
+
     }
 }

@@ -6,8 +6,9 @@ import java.util.Objects;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-
-import javax.mail.*;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.RequestDispatcher;
@@ -125,7 +126,7 @@ public class RegisterServlet extends HttpServlet {
 			msg.setText(message);
 			msg.setSentDate(Calendar.getInstance().getTime());
 
-			//Transport.send(msg, "autototaaldienst@dense-code.nl", "password1");
+			//TODO fix this line: Transport.send(msg, "autototaaldienst@dense-code.nl", "password1");
 
 		} catch (Exception e) {
 			Logger.getLogger("AccountSysteem").warning(

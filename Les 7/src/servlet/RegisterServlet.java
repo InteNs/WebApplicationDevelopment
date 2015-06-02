@@ -1,9 +1,6 @@
 package servlet;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Objects;
-import java.util.Properties;
+import java.util.*;
 import java.util.logging.Logger;
 
 
@@ -19,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.User;
 import domain.service.ServiceProvider;
+import domain.service.UserService;
+import domain.service.ValidateService;
 
 public class RegisterServlet extends HttpServlet {
 	private ArrayList<User> users = null;
@@ -33,23 +32,22 @@ public class RegisterServlet extends HttpServlet {
 				realName      = req.getParameter("realname"),
 				address 	  = req.getParameter("address"),
 				country 	  = req.getParameter("country"),
-				nullErr 	  = "Dit veld mag niet leeg zijn",
-				userExists 	  = "Gebruiker bestaat al",
-				emailExists   = "Email adres bestaat al",
-				emailEqual	  = "Email velden komen niet overeen",
-				passwordEqual = "Wachtwoord velden komen niet overeen",
 				button		  = req.getParameter("button");
-
+        System.out.println(req.getParameterMap());
+        ValidateService validateService = ServiceProvider.getValidateService();
+        UserService userService = ServiceProvider.getUserService();
 		switch (button) {
 			case "Registreren":
-				if (!ServiceProvider.getValidateService().validateAllFields(userName, email, emailRepeat, password, passwordRepeat, realName, address, country)) {
-					// TODO: separate checks form
-					req.setAttribute("register", "register");
+				if (!validateService.validateAllFields(userName, email, emailRepeat, password, passwordRepeat, realName, address, country)) {
+                    HashMap<String, String> selects = validateService.getErrorFields();
+                    req.setAttribute("register", "register");
+                    for(Map.Entry<String, String> entry : selects.entrySet())
+                        req.setAttribute(entry.getKey(),entry.getValue());
 				} else {
-					// TODO:  else {UserService.addUser(params)}
-					System.out.println("User added");
-					req.setAttribute("registrationSuccess", "Registratie gelukt");
-				}
+                    userService.addUser(userName, email, password, realName, address, country);
+                    System.out.println("User added");
+                    req.setAttribute("registrationSuccess", "Registratie gelukt");
+                }
 				break;
 			case "Loginscherm":;
 				break;

@@ -1,5 +1,6 @@
 <%--HTML--%>
 <!DOCTYPE html>
+<html>
 <head>
 	<title>BlogSite</title>
 	<%--Import CSS--%>
@@ -10,3 +11,4 @@
 <jsp:include page="components/message/blogPosts.jsp" />
 <jsp:include page="components/userFeedback/userFeedback.jsp" />
 </body>
+</html>

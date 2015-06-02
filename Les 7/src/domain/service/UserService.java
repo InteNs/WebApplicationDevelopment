@@ -23,4 +23,7 @@ public class UserService {
         if (userDAO.selectSingleUser(userName, password).isEmpty()) return false;
         else return true;
     }
+    public void addUser(String username, String email, String password, String realname, String address, String country){
+        userDAO.addUser(username,email,password,realname,address,country);
+    }
 }

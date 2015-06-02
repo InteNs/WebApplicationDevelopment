@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <head>
   <%--CSS imports--%>
-  <link rel="stylesheet" href="../../css/blogPostPanel.css"/>
+  <link rel="stylesheet" href="../blogPostPanel.css"/>
 </head>
 <body class="inline">
 <div class="containerBlogPostPanel">
@@ -14,7 +14,6 @@
   <div class="blogPostPanelBox">
     <h2>Blogs</h2>
   </div>
-    <%--TODO import blogposts.jsp here--%>
   <%
     if (request.getServletContext().getAttribute("usersList") != null)
       for (User user : (ArrayList<User>) request.getServletContext().getAttribute("usersList"))

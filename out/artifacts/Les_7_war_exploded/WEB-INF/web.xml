@@ -16,14 +16,6 @@
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>servlet.LoginServlet</servlet-class>
-		<init-param>
-			<param-name>userName</param-name>
-			<param-value>admin</param-value>
-		</init-param>
-		<init-param>
-			<param-name>password</param-name>
-			<param-value>admin</param-value>
-		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
@@ -48,14 +40,14 @@
 		<url-pattern>/register</url-pattern>
 	</servlet-mapping>
 
-	<servlet>
-		<servlet-name>BlogPostServlet</servlet-name>
-		<servlet-class>servlet.BlogPostServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>BlogPostServlet</servlet-name>
-		<url-pattern>/createPost</url-pattern>
-	</servlet-mapping>
+	<!--<servlet>-->
+		<!--<servlet-name>BlogPostServlet</servlet-name>-->
+		<!--<servlet-class>servlet.BlogPostServlet</servlet-class>-->
+	<!--</servlet>-->
+	<!--<servlet-mapping>-->
+		<!--<servlet-name>BlogPostServlet</servlet-name>-->
+		<!--<url-pattern>/createPost</url-pattern>-->
+	<!--</servlet-mapping>-->
 
 	<!-- Filters -->
 	<filter>
