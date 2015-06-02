@@ -1,12 +1,17 @@
-<%--HTML--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
 <!DOCTYPE html>
+<html>
 <head>
 	<title>BlogSite</title>
-	<%--Import CSS--%>
-	<link rel="stylesheet" type="text/css" href="css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="global.css"/>
 </head>
 <body>
-<jsp:include page="/components/loginPanel/loginPanel.jsp" />
+<c:if test="${not empty register}">
+	<jsp:include page="/components/registrationPanel.jsp" />
+</c:if>
+<c:if test="${empty register}">
+	<jsp:include page="/components/loginPanel.jsp" />
+</c:if>
 <%--<jsp:include page="components/message/blogPosts.jsp" />--%>
-<%--<jsp:include page="components/userFeedback/userFeedback.jsp" />--%>
 </body>
+</html>

@@ -60,7 +60,7 @@
 	<!-- Filters -->
 	<filter>
 		<filter-name>FilterForSecurity</filter-name>
-		<filter-class>security.SecurityFilter</filter-class>
+		<filter-class>filter.SecurityFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>FilterForSecurity</filter-name>

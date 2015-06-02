@@ -1,13 +1,12 @@
-<%--HTML--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <%--Load CSS--%>
-    <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+    <title>BlogSite</title>
+    <link rel="stylesheet" type="text/css" href="/global.css"/>
 </head>
-<body class="inline">
-<jsp:include page="../components/welcomePanel/welcomePanel.jsp" />
-<jsp:include page="../components/message/secureBlogPost.jsp" />
-<jsp:include page="../components/userFeedback/userFeedback.jsp" />
+<body>
+<jsp:include page="/components/welcomePanel.jsp" />
+<%--<jsp:include page="../components/message/secureBlogPost.jsp" />--%>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <head>
     <%--CSS imports--%>
-    <link rel="stylesheet" href="../../css/blogPostPanel.css"/>
+    <link rel="stylesheet" href="../blogPostPanel.css"/>
 </head>
 <body class="inline">
 <div class="containerBlogPostPanel">

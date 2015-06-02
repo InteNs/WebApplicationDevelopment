@@ -1,18 +1,18 @@
 /*userFeedback should be imported in the root of the html*/
 /*Location of notifications on screen*/
-.containerNotifications {
-    /*fixed width/height based on window*/
-    width:20%;
-    height: 100%;
-    /*element in bottem-right corner*/
-    position: absolute;
-    top: 0;
-    right: 0;
-    /*extra*/
-    padding: 1%;
-    border-left: solid 1px #d3d3d3;
-    overflow: scroll;
-}
+/*.containerNotifications {*/
+    /*/!*fixed width/height based on window*!/*/
+    /*width:20%;*/
+    /*height: 100%;*/
+    /*/!*element in bottem-right corner*!/*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 0;*/
+    /*/!*extra*!/*/
+    /*padding: 1%;*/
+    /*border-left: solid 1px #d3d3d3;*/
+    /*overflow: scroll;*/
+/*}*/
 .notificationBox {
     /*grow with message size*/
     height: auto;

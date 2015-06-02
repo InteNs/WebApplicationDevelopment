@@ -3,8 +3,14 @@ package domain.service;
 import domain.User;
 import persistance.UserDAO;
 
+import java.util.List;
+
 public class UserService {
         private UserDAO userDAO = new UserDAO();
+
+    public List<User> getAllUsers() {
+        return userDAO.selectAllUsers();
+    }
 
     public User getLoginUser(String userName, String password) {
         try {

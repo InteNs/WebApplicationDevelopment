@@ -103,7 +103,7 @@ registration.jsp
             if (countryNull != null) countryNull = nullError;
 
 Filter
-            package security;
+            package filter;
 
                         import java.io.IOException;
                         import javax.servlet.*;

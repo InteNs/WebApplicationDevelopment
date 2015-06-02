@@ -2,24 +2,19 @@ package listener;
 
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
+import java.util.logging.Logger;
 
 public class SessionCounterListener implements HttpSessionListener {
 
-    private static int totalActiveSessions;
+    private int totalActiveSessions = 0;
 
-    public static int getTotalActiveSession(){
-        return totalActiveSessions;
-    }
-
-    @Override
     public void sessionCreated(HttpSessionEvent arg0) {
-        // +1 to active userSessions
+        Logger.getLogger("listener.SessionCountListener").info("Session created, total active sessions: "+ totalActiveSessions);
         totalActiveSessions++;
     }
 
-    @Override
     public void sessionDestroyed(HttpSessionEvent arg0) {
-        // -1 from active userSessions
+        Logger.getLogger("listener.SessionCountListener").info("Session destroyed, total active sessions: "+ totalActiveSessions);
         totalActiveSessions--;
     }
 }

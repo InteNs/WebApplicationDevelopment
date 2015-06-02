@@ -4,13 +4,13 @@
 		 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 		 version="3.1">
 
-	<!--&lt;!&ndash;Listeners &ndash;&gt;-->
-	<!--<listener>-->
-		<!--<listener-class>listener.ServerContextListener</listener-class>-->
-	<!--</listener>-->
-	<!--<listener>-->
-		<!--<listener-class>listener.SessionCounterListener</listener-class>-->
-	<!--</listener>-->
+	<!--Listeners -->
+	<listener>
+		<listener-class>listener.ServerContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>listener.SessionCounterListener</listener-class>
+	</listener>
 
 	<!--Servlets & Mappings -->
 	<servlet>
@@ -22,23 +22,23 @@
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
 
-	<!--<servlet>-->
-		<!--<servlet-name>LogoutServlet</servlet-name>-->
-		<!--<servlet-class>servlet.LogoutServlet</servlet-class>-->
-	<!--</servlet>-->
-	<!--<servlet-mapping>-->
-		<!--<servlet-name>LogoutServlet</servlet-name>-->
-		<!--<url-pattern>/logout</url-pattern>-->
-	<!--</servlet-mapping>-->
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>servlet.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
 
-	<!--<servlet>-->
-		<!--<servlet-name>RegisterServlet</servlet-name>-->
-		<!--<servlet-class>servlet.RegisterServlet</servlet-class>-->
-	<!--</servlet>-->
-	<!--<servlet-mapping>-->
-		<!--<servlet-name>RegisterServlet</servlet-name>-->
-		<!--<url-pattern>/register</url-pattern>-->
-	<!--</servlet-mapping>-->
+	<servlet>
+		<servlet-name>RegisterServlet</servlet-name>
+		<servlet-class>servlet.RegisterServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegisterServlet</servlet-name>
+		<url-pattern>/register</url-pattern>
+	</servlet-mapping>
 
 	<!--<servlet>-->
 		<!--<servlet-name>BlogPostServlet</servlet-name>-->
@@ -49,14 +49,14 @@
 		<!--<url-pattern>/createPost</url-pattern>-->
 	<!--</servlet-mapping>-->
 
-	<!--&lt;!&ndash; Filters &ndash;&gt;-->
-	<!--<filter>-->
-		<!--<filter-name>FilterForSecurity</filter-name>-->
-		<!--<filter-class>security.SecurityFilter</filter-class>-->
-	<!--</filter>-->
-	<!--<filter-mapping>-->
-		<!--<filter-name>FilterForSecurity</filter-name>-->
-		<!--<url-pattern>/secure/*</url-pattern>-->
-	<!--</filter-mapping>-->
+	<!-- Filters -->
+	<filter>
+		<filter-name>FilterForSecurity</filter-name>
+		<filter-class>filter.SecurityFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>FilterForSecurity</filter-name>
+		<url-pattern>/secure/*</url-pattern>
+	</filter-mapping>
 
 </web-app>

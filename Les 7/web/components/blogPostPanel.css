@@ -2,14 +2,15 @@
 /*Location of the loginPanel on screen*/
 .containerBlogPostPanel {
     /*fixed width/height based on window*/
+    width:70%;
     height: 100%;
     /*element in bottem-right corner*/
     position: absolute;
     top: 0;
-    left: 20%;
-    right: 20%;
+    right: 0;
     /*extra*/
     padding: 1%;
+    border-left: solid 1px #d3d3d3;
     overflow: scroll;
 }
 .blogPostPanelBox {

@@ -31,4 +31,7 @@ public class UserDAO extends BaseDAO {
     public List<User> selectSingleUser(String userName, String password) {
         return selectUsers("SELECT * FROM blogsite_db.user WHERE username = '"+userName+"' AND password = '"+password+"'");
     }
+    public List<User> selectAllUsers() {
+        return selectUsers("SELECT * FROM blogsite_db.user");
+    }
 }

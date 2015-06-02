@@ -1,4 +1,4 @@
-package security;
+package filter;
 
 import java.io.IOException;
 import javax.servlet.*;
@@ -12,11 +12,10 @@ public class SecurityFilter implements Filter {
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
             throws IOException, ServletException {
+        HttpServletRequest httpServletRequest = (HttpServletRequest)req;
 
-        HttpServletRequest r2 = (HttpServletRequest)req;
-
-        if(r2.getSession().getAttribute("loggedInUser") == null) {
-            r2.getRequestDispatcher("/index.jsp").forward(req, resp);
+        if(httpServletRequest.getSession().getAttribute("loggedInUser") == null) {
+            httpServletRequest.getRequestDispatcher("/index.jsp").forward(req, resp);
         } else{
             chain.doFilter(req, resp);
         }
