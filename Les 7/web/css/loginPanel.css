@@ -1,0 +1,40 @@
+/*loginPanel should be imported in the root of the html*/
+/*Location of the loginPanel on screen*/
+.containerLoginPanel {
+    /*fixed width/height based on window*/
+    width:20%;
+    height: 100%;
+    /*element in bottem-right corner*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*extra*/
+    padding: 1%;
+    border-right: solid 1px #d3d3d3;
+}
+.loginPanelBox {
+    /*grow with size*/
+    width: 90%;
+    height: auto;
+    padding: 5%;
+    align-content: center;
+}
+/*Markup*/
+.notificationMessage {
+    border-radius: 4px;
+    padding: 5%;
+    line-height: 1.5;
+    letter-spacing: 0.025em;
+}
+.notificationTitle {
+    font-weight: 600;
+    font-size: 25px;
+    border-radius: 4px;
+    padding: 5%;
+    line-height: 1.5;
+    letter-spacing: 0.025em;
+    text-align: center;
+}
+.loginItem {
+    width: 100%;
+}
