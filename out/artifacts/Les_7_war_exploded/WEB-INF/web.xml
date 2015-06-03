@@ -40,14 +40,14 @@
 		<url-pattern>/register</url-pattern>
 	</servlet-mapping>
 
-	<!--<servlet>-->
-		<!--<servlet-name>BlogPostServlet</servlet-name>-->
-		<!--<servlet-class>servlet.BlogPostServlet</servlet-class>-->
-	<!--</servlet>-->
-	<!--<servlet-mapping>-->
-		<!--<servlet-name>BlogPostServlet</servlet-name>-->
-		<!--<url-pattern>/createPost</url-pattern>-->
-	<!--</servlet-mapping>-->
+	<servlet>
+		<servlet-name>BlogPostServlet</servlet-name>
+		<servlet-class>servlet.BlogPostServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BlogPostServlet</servlet-name>
+		<url-pattern>/createPost</url-pattern>
+	</servlet-mapping>
 
 	<!-- Filters -->
 	<filter>

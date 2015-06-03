@@ -14,7 +14,6 @@
   <div class="blogPostPanelBox">
     <h2>Blogs</h2>
   </div>
-    <%--TODO import blogposts.jsp here--%>
   <%
     if (request.getServletContext().getAttribute("usersList") != null)
       for (User user : (ArrayList<User>) request.getServletContext().getAttribute("usersList"))

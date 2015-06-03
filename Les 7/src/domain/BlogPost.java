@@ -1,34 +1,29 @@
 package domain;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalTime;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 
 public class BlogPost implements Serializable {
-    private int ID;
     private String message;
-    private final LocalDate ld;
-    private final LocalTime lt;
+    private User user;
+    private final LocalDateTime localDateTime;
 
-    public BlogPost(String message, int ID) {
-        this.ID = ID;
+    public BlogPost(String message,User user,LocalDateTime localDateTime) {
+        this.user = user;
         this.message = message;
-        ld = LocalDate.now();;
-        lt = LocalTime.now();
+        this.localDateTime = localDateTime;
+    }
+    public User getUser() {
+        return user;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
     }
-
-    public LocalTime getLt() {
-        return lt;
-    }
-
-    public LocalDate getLd() {
-        return ld;
-    }
-
     public String getMessage() {
         return message;
     }

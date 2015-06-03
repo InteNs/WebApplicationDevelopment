@@ -22,13 +22,13 @@ public class LoginServlet extends HttpServlet {
 
         switch(button) {
             case "Inloggen":
-                if(userService.isLoginValid(userName, password)){
+                if(userService.isLoginValid(userName,password)){
                     if (req.getParameter("rememberUserName") != null) {
                         Cookie c = new Cookie("cookieUserName", userName);
                         c.setMaxAge(2000);
                         resp.addCookie(c);
                     }
-                    req.getSession().setAttribute("loggedInUser", userService.getLoginUser(userName, password));
+                    req.getSession().setAttribute("loggedInUser", userService.getUser(userName));
                     requestDispatcher = req.getRequestDispatcher("/secure/welcome.jsp");
                 } else{
                     req.setAttribute("loginError", "Inloggen mislukt");

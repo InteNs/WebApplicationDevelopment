@@ -27,7 +27,7 @@
                     SessionCounterListener.getTotalActiveSession()+
                     "</div>" +
                     "</div>";
-//    TODO: Make Arraylist with modular notifications
+//     Make Arraylist with modular notifications
     if (errorMessage == null) errorMessage                  = "";
     if (userNameNull == null) userNameNull                  = "";
     if (realNameNull == null) realNameNull                  = "";

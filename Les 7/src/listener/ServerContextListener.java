@@ -1,5 +1,7 @@
 package listener;
 
+import domain.service.ServiceProvider;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -14,6 +16,7 @@ public class ServerContextListener implements ServletContextListener {
 
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ServletContext servletContext = servletContextEvent.getServletContext();
+        servletContext.setAttribute("blogposts", ServiceProvider.getBlogPostService().getAllBlogPosts());
         try{
             FileHandler fileHandler = new FileHandler(servletContext.getRealPath("/")+"blogLog.xml", true);
             logger.addHandler(fileHandler);

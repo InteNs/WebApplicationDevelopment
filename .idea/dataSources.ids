@@ -11,6 +11,7 @@
       <column name="message" sqlType="VARCHAR" precision="400" scale="0" nullable="true" jdbcType="12"/>
       <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="username" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="timestamp" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
       <primary-key name="PRIMARY" columns="ID"/>
       <foreign-key name="username" columns="username" ref-table="user" ref-schema="" ref-catalog="blogsite_db" ref-columns="username" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="unique_ID" unique="true" columns="ID"/>

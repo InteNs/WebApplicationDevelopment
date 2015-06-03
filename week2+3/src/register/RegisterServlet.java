@@ -126,7 +126,7 @@ public class RegisterServlet extends HttpServlet {
 			msg.setText(message);
 			msg.setSentDate(Calendar.getInstance().getTime());
 
-			//TODO fix this line: Transport.send(msg, "autototaaldienst@dense-code.nl", "password1");
+			//fix this line: Transport.send(msg, "autototaaldienst@dense-code.nl", "password1");
 
 		} catch (Exception e) {
 			Logger.getLogger("AccountSysteem").warning(

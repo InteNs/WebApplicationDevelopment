@@ -27,32 +27,27 @@ public class UserDAO extends BaseDAO {
         }catch (SQLException sqle){sqle.printStackTrace();}
         return results;
     }
-    private void insertUsers(String username, String email, String password, String realname, String address, String country){
-          final String SQL_INSERT = "INSERT INTO blogsite_db.user"
-                + " VALUES(?, ?, ?, ?, ?, ?)";
+    public void insertUsers(String username, String email, String password, String realname, String address, String country){
+          final String SQL_INSERT = "INSERT INTO blogsite_db.user (username, email, password, realname, adress, country)  VALUES(?, ?, ?, ?, ?, ?)";
         try (Connection connection = DriverManager.getConnection(DB_URL,DB_USERNAME,DB_PASSWORD)){
             PreparedStatement statement = connection.prepareStatement(SQL_INSERT);
             statement.setString(1,username);
-            statement.setString(1,email);
-            statement.setString(1,password);
-            statement.setString(1,realname);
-            statement.setString(1,address);
-            statement.setString(1,country);
+            statement.setString(2,email);
+            statement.setString(3,password);
+            statement.setString(4,realname);
+            statement.setString(5,address);
+            statement.setString(6,country);
+            if(statement.execute()) System.out.println("user added");
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
     // READ
-    public List<User> selectSingleUser(String userName, String password) {
-        return selectUsers("SELECT * FROM blogsite_db.user WHERE username = '"+userName+"' AND password = '"+password+"'");
+    public User selectSingleUser(String userName) {
+        return selectUsers("SELECT * FROM blogsite_db.user WHERE username = '"+userName+"'").get(0);
     }
     public List<User> selectAllUsers() {
         return selectUsers("SELECT * FROM blogsite_db.user");
-    }
-
-    public void addUser(String username, String email, String password, String realname, String address, String country) {
-                insertUsers(username,email,password,realname,address,country);
-        //INSERT INTO `user` VALUES ('admin','admin@admin.nl','admin','admin','admin\'s address 1','admin land');
     }
 }
