@@ -23,7 +23,8 @@
                 <div class="blogPostFooter">
                     Geschreven door: ${currentpost.user.userName}.
                     <br/>
-                    Gepost op: ${currentpost.localDateTime}.
+                    ${currentpost.localDateTime}
+                    <%--Gepost op: <fmt:formatDate value="${currentpost.timeStamp}" type="both" dateStyle="full" timeStyle="short" /> .--%>
                     <br/>
                 </div>
                 <br>
