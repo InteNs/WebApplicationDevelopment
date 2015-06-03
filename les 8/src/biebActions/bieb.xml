@@ -5,6 +5,13 @@
 
 <struts>
 	<package name="visitor" namespace="/visitor" extends="struts-default">
+
+		<!-- Opdracht 3 Les 9 -->
+		<action name="BookInfo" class="biebActions.visitor.BookInfo">
+			<result name="success">/jsp/visitor/BookInfo.jsp</result>
+			<result name="input">/jsp/visitor/BookInfo.jsp</result>
+		</action>
+		<!-- TODO: specify an action for my booklist-->
 		
 		<!-- no action for empty-input-form needed -->
 		<action name="BookList" class="biebActions.visitor.BookList">

@@ -23,6 +23,7 @@
 					<td><s:property value="id" /></td>
 					<td><s:property value="titel" /></td>
 					<td><s:property value="status" /></td>
+					<td><a href="<s:url action="BookInfo" namespace="/visitor" />?bookid=<s:property value="id" />">info</a></td>
 				</tr>
 			</s:iterator>
 		</table>
