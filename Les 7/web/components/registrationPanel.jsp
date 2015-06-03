@@ -12,7 +12,7 @@
       <h2>Registreren</h2>
     </div>
     <div class="loginPanelBox">
-      <input class="loginItem" type="text" name="username" id="username" placeholder="Vul gebruikersnaam in"/>
+      <input class="loginItem" type="text" name="username" id="username" placeholder="Vul gebruikersnaam in" value="${param.username}"/>
     </div>
     <c:if test="${not empty usernameerror}">
       <div class="notificationBox">
@@ -22,7 +22,7 @@
       </div>
     </c:if>
     <div class="loginPanelBox">
-      <input class="loginItem" type="text" name="realname" id="realname" placeholder="Vul naam in"/>
+      <input class="loginItem" type="text" name="realname" id="realname" placeholder="Vul naam in" value="${param.realname}"/>
     </div>
     <c:if test="${not empty realnameerror}">
       <div class="notificationBox">
@@ -52,7 +52,7 @@
       </div>
     </c:if>
     <div class="loginPanelBox">
-      <input class="loginItem" type="email" name="email" id="email" placeholder="Vul emailadres in"/>
+      <input class="loginItem" type="email" name="email" id="email" placeholder="Vul emailadres in" value="${param.email}"/>
     </div>
     <c:if test="${not empty emailerror}">
       <div class="notificationBox">
@@ -63,7 +63,7 @@
       </div>
     </c:if>
     <div class="loginPanelBox">
-      <input class="loginItem" type="text" name="emailRepeat" id="emailRepeat" placeholder="Herhaal email"/>
+      <input class="loginItem" type="text" name="emailRepeat" id="emailRepeat" placeholder="Herhaal email" value="${param.emailRepeat}"/>
     </div>
     <c:if test="${not empty emailrepeaterror}">
       <div class="notificationBox">
@@ -73,7 +73,7 @@
       </div>
     </c:if>
     <div class="loginPanelBox">
-      <input class="loginItem" type="text" name="address" id="address" placeholder="Vul adres in"/>
+      <input class="loginItem" type="text" name="address" id="address" placeholder="Vul adres in" value="${param.address}"/>
     </div>
     <c:if test="${not empty addresserror}">
       <div class="notificationBox">
@@ -83,7 +83,7 @@
       </div>
     </c:if>
     <div class="loginPanelBox">
-      <input class="loginItem" type="text" name="country" id="country" placeholder="Vul land in"/>
+      <input class="loginItem" type="text" name="country" id="country" placeholder="Vul land in" value="${param.country}"/>
     </div>
     <c:if test="${not empty countryerror}}">
       <div class="notificationBox">

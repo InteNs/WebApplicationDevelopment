@@ -507,3 +507,137 @@
   <thread>16</thread>
   <message>Logger initialized</message>
 </record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-06-03T21:39:00</date>
+  <millis>1433360340162</millis>
+  <sequence>33</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>31</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-06-03T21:39:23</date>
+  <millis>1433360363654</millis>
+  <sequence>40</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>47</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-06-03T21:44:22</date>
+  <millis>1433360662729</millis>
+  <sequence>34</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>13</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-06-03T21:54:40</date>
+  <millis>1433361280692</millis>
+  <sequence>34</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>14</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-06-03T21:57:50</date>
+  <millis>1433361470433</millis>
+  <sequence>43</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>47</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-06-03T22:01:14</date>
+  <millis>1433361674387</millis>
+  <sequence>49</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>62</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-06-03T22:03:41</date>
+  <millis>1433361821048</millis>
+  <sequence>53</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>75</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-06-03T22:06:32</date>
+  <millis>1433361992163</millis>
+  <sequence>57</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>90</thread>
+  <message>Logger initialized</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-06-03T22:16:23</date>
+  <millis>1433362583816</millis>
+  <sequence>34</sequence>
+  <logger>listener.SessionCounterListener</logger>
+  <level>INFO</level>
+  <class>listener.ServerContextListener</class>
+  <method>contextInitialized</method>
+  <thread>14</thread>
+  <message>Logger initialized</message>
+</record>

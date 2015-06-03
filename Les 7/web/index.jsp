@@ -12,6 +12,6 @@
 <c:if test="${empty register}">
 	<jsp:include page="/components/loginPanel.jsp" />
 </c:if>
-<jsp:include page="components/blogPost/blogPosts.jsp" />
+<jsp:include page="components/blogPosts.jsp" />
 </body>
 </html>

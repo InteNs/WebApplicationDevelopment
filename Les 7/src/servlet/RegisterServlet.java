@@ -29,7 +29,7 @@ public class RegisterServlet extends HttpServlet {
 
         ValidateService validateService = ServiceProvider.getValidateService();
         UserService userService = ServiceProvider.getUserService();
-        //EmailService emailService = ServiceProvider.getEmailService();
+		EmailService emailService = ServiceProvider.getEmailService();
 
         String 	userName 	  = req.getParameter("username"),
 				email 	  	  = req.getParameter("email"),
@@ -57,8 +57,8 @@ public class RegisterServlet extends HttpServlet {
                                     +"Bedankt voor uw registratie.\n\n"
                                     +"Om toegang te krijgen tot uw account, moet u zich aanmelden met de onderstaande gebruikersnaam. \n"
                                     + "Uw gebruikersnaam is: "+userName;
-//                    try {emailService.sendMail(email,MAIL_TITLE,MAIL_MSG);
-//                    } catch (Exception e) {System.err.println("mail could not be send: "+e.getMessage());}
+                    try {emailService.sendMail(email,MAIL_TITLE,MAIL_MSG);
+                    } catch (Exception e) {System.err.println("mail could not be send: "+e.getMessage());}
                     req.setAttribute("registrationSuccess", "Registratie gelukt");
                 }
 				break;

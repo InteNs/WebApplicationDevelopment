@@ -18,7 +18,7 @@
       <input class="loginItem" type="password" name='password' id="password" placeholder="Vul wachtwoord in"/>
     </div>
     <div class="loginPanelBox">
-      <span class="loginItem"><input type="checkbox" name="rememberUserName" id="rememberUserName" title="Gebruikersnaam onthouden"/></span>
+      <span class="loginItem"><input type="checkbox" name="rememberUserName" id="rememberUserName" title="Gebruikersnaam onthouden"/>Gebruikersnaam onthouden</span>
     </div>
     <div class="loginPanelBox">
       <input class="loginItem" type="submit" value="Inloggen" name="button"/>
@@ -37,7 +37,7 @@
         </div>
       </div>
     </c:if>
-    <c:if test="${not empty registrationInfo}">
+    <c:if test="${not empty registrationSuccess}">
       <div class="notificationBox">
         <div class="notificationMessage notificationSuccess">
             ${registrationSuccess}

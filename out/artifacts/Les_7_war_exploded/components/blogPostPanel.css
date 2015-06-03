@@ -2,7 +2,7 @@
 /*Location of the loginPanel on screen*/
 .containerBlogPostPanel {
     /*fixed width/height based on window*/
-    width:70%;
+    width:75%;
     height: 100%;
     /*element in bottem-right corner*/
     position: absolute;
@@ -10,7 +10,6 @@
     right: 0;
     /*extra*/
     padding: 1%;
-    border-left: solid 1px #d3d3d3;
     overflow: scroll;
 }
 .blogPostPanelBox {
@@ -43,6 +42,7 @@
     border-color: #878787;
     /*blurred border*/
     box-shadow: 0 0 5px 1px #878787;
+    margin-bottom: 1%;
 }
 .blogPostFooter {
     font-size: 10px;
