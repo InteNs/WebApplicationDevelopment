@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="visitor" namespace="/visitor" extends="struts-default">
+		
+		<!-- no action for empty-input-form needed -->
+		<action name="BookList" class="biebActions.visitor.BookList">
+			<result name="success">/jsp/visitor/BookList.jsp</result>
+		</action>
+		
+		
+		<!-- action for empty-input-form -->
+		<action name="CreateAccountForm">
+			<result name="success">/jsp/visitor/CreateAccountForm.jsp</result>
+		</action>
+		<action name="CreateAccount" class="biebActions.visitor.CreateAccount">
+			<result name="success">/jsp/visitor/AccountCreated.jsp</result>
+			<result name="input">/jsp/visitor/CreateAccountForm.jsp</result>
+		</action>
+		
+		
+		<!-- action for empty-input-form -->
+		<action name="LoginForm">
+			<result name="success">/jsp/visitor/LoginForm.jsp</result>
+		</action>
+		<action name="Login" class="biebActions.visitor.Login">
+			<result name="success">/jsp/general/StartMenu.jsp</result>
+			<result name="input">/jsp/visitor/LoginForm.jsp</result>
+		</action>
+	</package>
+	
+	<package name="member" namespace="/member" extends="struts-default">
+		<interceptors>
+			<interceptor name="authenticationInterceptor"
+				class="biebInterceptors.AuthenticationInterceptor" />
+
+			<interceptor-stack name="MemberStack">
+				<interceptor-ref name="authenticationInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+	
+		<default-interceptor-ref name="MemberStack" />	
+		
+		<global-results>
+			<result name="login" type="redirect">/visitor/LoginForm.action</result>
+		</global-results>
+
+		
+		<action name="BookReservationForm">
+			<result name="success">/jsp/not_yet_implemented.jsp</result>
+		</action>
+		<!-- TODO: specify an action for book reservations -->
+		
+		
+		<action name="CancelReservationForm">
+			<result name="success">/jsp/not_yet_implemented.jsp</result>
+		</action>
+		<!-- TODO: specify an action for canceling reservations -->
+		
+		
+		<action name="MyBookList">
+			<result name="success">/jsp/not_yet_implemented.jsp</result>
+		</action>
+		<!-- TODO: specify an action for my booklist-->
+		
+		
+		<action name="ChangePasswordForm">
+			<result name="success">/jsp/not_yet_implemented.jsp</result>
+		</action>
+		<!-- TODO: specify an action for changing password -->
+
+		
+		<!-- no input-form action needed -->
+		<action name="Logout" class="biebActions.member.Logout">
+			<result name="success">/jsp/member/LoggedOut.jsp</result>
+		</action>
+	</package>
+</struts>
