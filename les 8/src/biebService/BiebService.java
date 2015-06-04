@@ -43,11 +43,12 @@ public class BiebService implements IBiebService {
 	public List<Book> getBooks() {
 		return books;
 	}
-	
+
 	public Book getBookById(int id) {
 		for (Book book:books)
-			if (book.getId() == id)
+			if (book.getId() == id){
 				return book;
+			}
 		return null;
 	}
 	

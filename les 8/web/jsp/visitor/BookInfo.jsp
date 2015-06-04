@@ -17,19 +17,37 @@
 
 <table>
   <tr class="thcolor">
-    <th>id</th>
-    <th>titel</th>
-    <th>status</th>
+    <th>attribuut</th>
+    <th>waarde</th>
   </tr>
     <tr class="tdcolor">
-      <td><s:property value="id" /></td>
-      <td><s:property value="titel" /></td>
-      <td><s:property value="status" /></td>
+      <td>id</td>
+      <td><s:property value="book.id" /><s:fielderror/></td>
     </tr>
+  <tr class="tdcolor">
+    <td>titel</td>
+    <td><s:property value="book.titel" /></td>
+  </tr>
+  <tr class="tdcolor">
+    <td>auteur</td>
+    <td><s:property value="book.auteur" /></td>
+  </tr>
+  <tr class="tdcolor">
+    <td>isbn</td>
+    <td><s:property value="book.isbn" /></td>
+  </tr>
+  <tr class="tdcolor">
+    <td>pages</td>
+    <td><s:property value="book.pages" /></td>
+  </tr>
+  <tr class="tdcolor">
+    <td>status</td>
+    <td><s:property value="book.status" /></td>
+  </tr>
 </table>
 
 <hr />
 
-<a href="<s:url action='BookList' namespace="/" />">Terug naar de boekenlijst</a>
+<a href="<s:url action='BookList' namespace="/visitor" />">Terug naar de boekenlijst</a>
 </body>
 </html>
