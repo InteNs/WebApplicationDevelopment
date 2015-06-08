@@ -55,9 +55,14 @@
 			<result name="input">/jsp/visitor/BookInfo.jsp</result>
 		</action>
 
-		<action name="BookReservationForm">
-			<result name="success">/jsp/not_yet_implemented.jsp</result>
+		<action name="BookReservationForm" class = "biebActions.member.AvailableBookList">
+			<result name="success">/jsp/member/AvailableBooksList.jsp</result>
 		</action>
+
+        <action name="ReserveBook" class = "biebActions.member.ReserveBook">
+            <result name="success">/jsp/general/Startmenu.jsp</result>
+            <result name="input">/jsp/not_yet_implemented.jsp</result>
+        </action>
 		<!-- TODO: specify an action for book reservations -->
 		
 		
