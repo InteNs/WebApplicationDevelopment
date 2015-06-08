@@ -6,11 +6,7 @@
         <element id="directory" name="classes">
           <element id="module-output" name="Les 7" />
         </element>
-        <element id="directory" name="lib">
-          <element id="library" level="project" name="taglibs" />
-          <element id="library" level="project" name="mysql-connector-java-5.1.35-bin" />
-          <element id="library" level="project" name="javax.mail" />
-        </element>
+        <element id="directory" name="lib" />
       </element>
       <element id="javaee-facet-resources" facet="Les 7/web/Web" />
     </root>

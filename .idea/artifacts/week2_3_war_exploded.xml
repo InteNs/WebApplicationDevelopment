@@ -7,12 +7,9 @@
           <element id="module-output" name="week2+3" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="javax.mail" />
           <element id="library" level="project" name="activation" />
           <element id="library" level="project" name="Java EE 6-Java EE 6" />
           <element id="file-copy" path="$PROJECT_DIR$/lib/mail-1.4.1.jar" />
-          <element id="library" level="project" name="taglibs" />
-          <element id="library" level="project" name="mysql-connector-java-5.1.35-bin" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="week2+3/web/Web" />
