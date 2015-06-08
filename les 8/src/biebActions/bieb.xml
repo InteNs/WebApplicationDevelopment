@@ -60,8 +60,8 @@
 		</action>
 
         <action name="ReserveBook" class = "biebActions.member.ReserveBook">
-            <result name="success">/jsp/general/Startmenu.jsp</result>
-            <result name="input">/jsp/not_yet_implemented.jsp</result>
+            <result name="success">/jsp/general/StartMenu.jsp</result>
+            <result name="input">/jsp/member/ReservationFailed.jsp</result>
         </action>
 		<!-- TODO: specify an action for book reservations -->
 		
