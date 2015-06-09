@@ -63,21 +63,19 @@
             <result name="success">/jsp/general/StartMenu.jsp</result>
             <result name="input">/jsp/member/ReservationFailed.jsp</result>
         </action>
-		<!-- TODO: specify an action for book reservations -->
 		
 		
-		<action name="CancelReservationForm">
-			<result name="success">/jsp/not_yet_implemented.jsp</result>
+		<action name="CancelReservation" class = "biebActions.member.CancelBook">
+			<result name="success">/jsp/general/StartMenu.jsp</result>
+			<result name="input">/jsp/member/CancelReservationFailed.jsp</result>
 		</action>
 		<!-- TODO: specify an action for canceling reservations -->
 		
 		
-		<action name="MyBookList">
-			<result name="success">/jsp/not_yet_implemented.jsp</result>
+		<action name="MyBookList" class="biebActions.member.MyBookList">
+			<result name="success">/jsp/member/MyBookList.jsp</result>
 		</action>
-		<!-- TODO: specify an action for my booklist-->
-		
-		
+
 		<action name="ChangePassword" class="biebActions.member.ChangePassword">
 			<result name="success">/jsp/member/PasswordChanged.jsp</result>
 			<result name="input">/jsp/member/ChangePasswordForm.jsp</result>
